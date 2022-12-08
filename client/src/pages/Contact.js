@@ -5,7 +5,6 @@ export default function Contact() {
         <section className="about" id="about-me">
          <form id="contact-form">
         <h1 id="title">Contact Me:</h1>
-    
         <label for="name" id="name-label">Name:</label>
         <input type="text" id="name" required placeholder="Enter your name"></input> 
         <label for="email" id="email-label">Email:</label>
@@ -20,3 +19,4 @@ export default function Contact() {
       </section> 
     );
 }
+//Contact Page
