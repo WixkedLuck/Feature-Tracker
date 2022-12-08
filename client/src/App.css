@@ -1,5 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Playfair+Display&display=swap');
+
 .App {
   text-align: center;
+  background-color: rgb(32,33,32);
+  font-family: 'Cinzel', serif ;
+}
+html{
+  background-color: rgb(32,33,32);
+  font-family: 'Cinzel', serif ;
 }
 
 
