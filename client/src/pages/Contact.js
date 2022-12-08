@@ -20,3 +20,5 @@ export default function Contact() {
     );
 }
 //Contact Page
+
+//Updated info.
