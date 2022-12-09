@@ -13,6 +13,7 @@ const typeDefs = gql`
     _id: ID!
     name: String!
     description: String
+    team: [User]
     tasks: [Task]
   }
 
