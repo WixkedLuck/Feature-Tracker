@@ -2,7 +2,29 @@ const db = require('./connection');
 const { Task, Project, User } = require('../models');
 
 db.once('open', async () => {
+
+    await Task.deleteMany();
+
+  await Task.insertMany([
+    {
+      description:
+        'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
+      projects: Project,
+      status: "Incomplete",
+      priority: "Medium"
+    },
+    {
+        description:
+          'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
+        projects: Project,
+        status: "Complete",
+        priority: "Low"
+      },
+    ]
+   );
+
   await Project.deleteMany();
+  
 
   const projects = await Project.insertMany([
     {
@@ -17,11 +39,11 @@ db.once('open', async () => {
   },
   ]);
 
-  console.log('categories seeded');
+  console.log('Projects seeded, congratulations');
 
   await Workspace.deleteMany();
 
-  const workspaces = await Workspace.insertOne(
+  await Workspace.insertOne(
     {
       name: 'Main Page',
       description:
@@ -30,30 +52,23 @@ db.once('open', async () => {
     },
    );
 
-  console.log('products seeded');
+  console.log('Workspace seeded');
 
   await User.deleteMany();
 
   await User.create({
-    firstName: 'Pamela',
-    lastName: 'Washington',
-    email: 'pamela@testmail.com',
+    firstName: 'Susan',
+    lastName: 'Davinci',
+    email: 'Susan@testmail.com',
     password: 'password12345',
-    orders: [
+    tasks: [
       {
-        products: [products[0]._id, products[0]._id, products[1]._id]
+        tasks: [tasks[0]._id, tasks[0]._id, tasks[1]._id]
       }
     ]
   });
 
-  await User.create({
-    firstName: 'Elijah',
-    lastName: 'Holt',
-    email: 'eholt@testmail.com',
-    password: 'password12345'
-  });
-
-  console.log('users seeded');
+  console.log('users seeded, phenomenal');
 
   process.exit();
 });

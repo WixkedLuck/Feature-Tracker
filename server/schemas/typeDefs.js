@@ -13,6 +13,7 @@ const typeDefs = gql`
     _id: ID!
     name: String!
     description: String
+    team: [User]
     tasks: [Task]
   }
 
@@ -31,6 +32,7 @@ const typeDefs = gql`
     email: String!
     password: String!
     tasks: [Task]
+    projects: [Project]
   }
 
   type Auth {
