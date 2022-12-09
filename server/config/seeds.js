@@ -20,21 +20,35 @@ db.once('open', async () => {
         status: "Complete",
         priority: "Low"
       },
+      {
+        description:
+          'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
+        projects: Project,
+        status: "Complete",
+        priority: "High"
+      },
     ]
    );
+
+   console.log("You've seeded the tasks, WOW.")
 
   await Project.deleteMany();
   
 
   const projects = await Project.insertMany([
     {
-    name: "String!",
-    description: "String",
+    name: "Trusty Notetaker",
+    description: "Create a personalized and fastastic note",
     tasks: []
   },
   {
-    name: "String!",
-    description: "String",
+    name: "Old video game simulator!",
+    description: "Simulate a video game in the style of 1980 graphics.",
+    tasks: []
+  },
+  {
+    name: "AI co-writing companion",
+    description: "An artifiicial intelligence that helps you write.",
     tasks: []
   },
   ]);
@@ -48,7 +62,7 @@ db.once('open', async () => {
       name: 'Main Page',
       description:
         'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-      projects: []
+      projects: [projects[0]._id, projects[0]._id, projects[1]._id]
     },
    );
 
@@ -65,7 +79,12 @@ db.once('open', async () => {
       {
         tasks: [tasks[0]._id, tasks[0]._id, tasks[1]._id]
       }
-    ]
+    ],
+    projects: [
+        {
+            projects: [projects[0]._id, projects[0]._id, projects[1]._id]
+        }
+      ]
   });
 
   console.log('users seeded, phenomenal');
