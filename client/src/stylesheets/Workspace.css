@@ -1,0 +1,20 @@
+.header{
+    background-color: #242424;
+    color: whitesmoke;
+    padding: 10rem;
+    
+}
+.h1x{
+    font-size: 50px;
+}
+.h2x{
+    
+    color: whitesmoke;
+    width: fit-content;
+    margin: auto;
+    border-bottom: solid greenyellow 2px;
+}
+.sized{
+    width: 30%;
+    margin: auto;
+  }
