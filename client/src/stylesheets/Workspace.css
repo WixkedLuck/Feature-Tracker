@@ -18,3 +18,16 @@
     width: 30%;
     margin: auto;
   }
+.col{
+ font-size: 24px;
+ color: whitesmoke;
+ word-wrap: wrap; 
+ border: rgb(32,33,32) 2px solid;
+ background-color: #242424;
+}
+.ftcolor{
+    color: #242424;
+}
+.formcolor{
+    color: #242424;
+}
