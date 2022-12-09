@@ -16,6 +16,7 @@ import React from "react";
 
 // Page Setup
     // Navbar
+        // Description of Project on Left Side
         // List out Task itself
         // ? List out Assignees 
         // List out Status (Seen, InProgress, Testing, Released, Closed) ??
@@ -24,3 +25,53 @@ import React from "react";
         // delete task btn? (or does this go to task itself)
         // back btn to go back to InProject.js
 // 
+
+function Task () {
+    return (
+        <div className="container text-center">
+            <div className="row">
+                {/* Smaller Column */}
+                <div className="col-4">
+                    <div className="project-info">
+                        <h2>Project Name</h2>
+                        <a href='#' className="btn btn-primary">Go Back to all Projects</a>
+                        <button type="button" class="btn btn-primary">Add Task Here</button>
+                    </div>
+                </div>
+                {/* Larger Column */}
+                <div className="col-8">
+                    {/* Table of Tasks */}
+                    <table className="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Comment</th>
+                                <th scope="col">Priority</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Contacts</th>
+                            </tr>
+                        </thead>
+                        <tbody className="table-group-divider">
+                            <tr>
+                            <th scope="row">1</th>
+                            <td>Fix this blah</td>
+                            <td>HIGH</td>
+                            <td>In Review</td>
+                            <td>Brian, Ely</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">2</th>
+                            <td>Fix this blah</td>
+                            <td>LOW</td>
+                            <td>In Review</td>
+                            <td>Brian, Ely</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default Task; 
