@@ -10,21 +10,21 @@ db.once('open', async () => {
       description:
         'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
       projects: Project,
-      status: "Incomplete",
+      status: false,
       priority: "Medium"
     },
     {
         description:
           'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
         projects: Project,
-        status: "Complete",
+        status: true,
         priority: "Low"
       },
       {
         description:
           'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
         projects: Project,
-        status: "Complete",
+        status: true,
         priority: "High"
       },
     ]
