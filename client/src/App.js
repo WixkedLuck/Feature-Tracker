@@ -1,6 +1,6 @@
-import Task from './pages/Task';
+// import Task from './pages/Task';
 // import Contact from './pages/Contact';
-// import Inproject from './pages/Inproject';
+ import Inproject from './pages/Inproject';
 // import Login from './pages/Login';
 // import Signup from './pages/Signup';
 // import Workspace from './pages/Workspace';
@@ -10,12 +10,12 @@ function App() {
   return (
     <div className="App">
     <h1>hello world</h1>
-    <Task/>
-    {/* <Contact/>
+    {/*<Task/>
+    <Contact/>
     <Signup/>
     <Workspace/>
-    <Login/>
-    <Inproject/> */}
+    <Login/>*/}
+    <Inproject/> 
     </div>
   );
 }
