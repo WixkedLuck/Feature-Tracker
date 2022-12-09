@@ -35,6 +35,7 @@ function Task () {
                     <div className="project-info">
                         <h2>Project Name</h2>
                         <a href='#' className="btn btn-primary">Go Back to all Projects</a>
+                        <button type="button" class="btn btn-primary">Add Task Here</button>
                     </div>
                 </div>
                 {/* Larger Column */}
@@ -51,12 +52,22 @@ function Task () {
                             </tr>
                         </thead>
                         <tbody className="table-group-divider">
+                            <tr>
                             <th scope="row">1</th>
-                            
+                            <td>Fix this blah</td>
+                            <td>HIGH</td>
+                            <td>In Review</td>
+                            <td>Brian, Ely</td>
+                            </tr>
+                            <tr>
+                            <th scope="row">2</th>
+                            <td>Fix this blah</td>
+                            <td>LOW</td>
+                            <td>In Review</td>
+                            <td>Brian, Ely</td>
+                            </tr>
                         </tbody>
-
                     </table>
-
                 </div>
             </div>
         </div>
