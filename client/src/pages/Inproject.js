@@ -27,39 +27,39 @@ function Inproject() {
     return (
         <div className="container text-center">
             <div className="row">
-                {/* Card 1 */}
-                <div className="col">
-                    <div className="card" style={{ width: "18rem" }}>
-                        <div className="card-body">
-                            <h5 className="card-title">Project 1</h5>
-                            <p className="card-text">Project 1 Tasks</p>
-                            <a href="#" className="card-link">Tasks List</a>
-                        </div>
+                {/* Smaller Column */}
+                <div className="col-4">
+                    <div className="project-info">
+                        <h2>Project Name</h2>
+                        {/* <h4>Project Description blah blah stuff goes here</h4> */}
+                        <button href='#' className="btn btn-primary">all Projects</button>
+                        <button href='#' className="btn btn-primary">add to team</button>
+                        <button href='#' className="btn btn-primary">add task</button>
                     </div>
                 </div>
-                {/* Card 2 */}
-                <div className="col">
-                    <div className="card" style={{ width: "18rem" }}>
-                        <div className="card-body">
-                            <h5 className="card-title">Project 1</h5>
-                            <p className="card-text">Project 1 Tasks</p>
-                            <a href="#" className="card-link">Tasks List</a>
-                        </div>
-                    </div>
-                </div>
-                {/* Card 3 */}
-                <div className="col">
-                    <div className="card" style={{ width: "18rem" }}>
-                        <div className="card-body">
-                            <h5 className="card-title">Project 1</h5>
-                            <p className="card-text">Project 1 Tasks</p>
-                            <a href="#" className="card-link">Tasks List</a>
-                        </div>
-                    </div>
+                {/* Larger Column */}
+                <div className="col-8">
+                    {/* Table of Tasks */}
+                    <table className="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">Title</th>
+                                <th scope="col">Priority</th>
+                                <th scope="col">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody className="table-group-divider"> {/* add sort if possible */}
+                            <tr>
+                                <th scope="col">First Title</th>
+                                <th scope="col">First Priority</th>
+                                <th scope="col">First Status</th> {/* how to update */}
+                                <button href='#' className="btn btn-primary">completed</button>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-
     )
 }
 
