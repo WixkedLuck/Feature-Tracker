@@ -16,6 +16,7 @@ import React from "react";
 
 // Page Setup
     // Navbar
+        // Description of Project on Left Side
         // List out Task itself
         // ? List out Assignees 
         // List out Status (Seen, InProgress, Testing, Released, Closed) ??
