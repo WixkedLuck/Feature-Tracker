@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Playfair+Display&display=swap');
 
+/* brand classes for each element like <p> <h1>  */
+/* add colors and sizes here as well */
 .App {
   text-align: center;
   background-color: rgb(32,33,32);
@@ -7,7 +9,7 @@
 }
 html{
   background-color: rgb(32,33,32);
-  font-family: 'Cinzel', serif ;
+  
 }
 
 
