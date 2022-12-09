@@ -2,18 +2,18 @@
 
 .App {
   text-align: center;
-  background-color: rgb(32,33,32);
+  /* background-color: rgb(32,33,32); */
   font-family: 'Cinzel', serif ;
 }
 html{
-  background-color: rgb(32,33,32);
+  /* background-color: rgb(32,33,32); */
   font-family: 'Cinzel', serif ;
 }
 
 
 
 .App-header {
-  background-color: #282c34;
+  /* background-color: #282c34; */
   min-height: 100vh;
   display: flex;
   flex-direction: column;

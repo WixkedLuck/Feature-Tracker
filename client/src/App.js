@@ -1,11 +1,11 @@
-import Workspace from './pages/Workspace';
+import Inproject from './pages/Inproject';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
     <h1>hello world</h1>
-    <Workspace/>
+    <Inproject/>
     </div>
   );
 }
