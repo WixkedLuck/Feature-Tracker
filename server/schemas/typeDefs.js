@@ -21,8 +21,8 @@ const typeDefs = gql`
     _id: ID!
     description: String!
     project: Project
-    status: String
-    priority: String
+    status: Boolean
+    priority: String!
   }
 
   type User {
