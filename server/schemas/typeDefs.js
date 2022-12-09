@@ -32,6 +32,7 @@ const typeDefs = gql`
     email: String!
     password: String!
     tasks: [Task]
+    projects: [Project]
   }
 
   type Auth {
