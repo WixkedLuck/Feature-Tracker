@@ -37,3 +37,12 @@ export const REMOVE_TASK = 'REMOVE_TASK';
  * - updates task array
  */
 export const UPDATE_TASK = 'UPDATE_TASK';
+
+/*
+ * UPDATE Project:
+ * - takes object with id and updated values for project parameter(s)
+ * - finds project based on ID and updates object
+ * - updates object in-place within copy of project array
+ * - updates project array
+ */
+export const UPDATE_PROJECT = 'UPDATE_PROJECT';
