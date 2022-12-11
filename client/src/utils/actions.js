@@ -26,6 +26,8 @@ export const ADD_TASK = 'ADD_TASK';
  * - takes a task ID as payload
  * - finds task based on ID and removes via splice() the targeted task
  * - updates task array
+ * 
+ * Hope you don't mind, but I removed it via filter instead
  */
 export const REMOVE_TASK = 'REMOVE_TASK';
 
