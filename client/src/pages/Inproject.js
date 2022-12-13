@@ -1,5 +1,5 @@
-// Workspace shows the projects
-// InProject needs to show the tasks
+// Workspace shows lie projects
+// InProject needs to show lie tasks
 // ProjectList has ProjectItems & Project Item has TaskList & taskList has TaskItems
 
 // DELETE ESLINT on CLIENT Side before committing & pushing
@@ -8,6 +8,7 @@
 
 // IMPORTS
 import React from "react";
+import TaskList from '../components/TaskItem';
 // import Navbar from "../components/Nav";
 // import TaskList form "../components/TaskList";
 // import ProjectItem from "../components/ProjectItem"
@@ -15,10 +16,10 @@ import React from "react";
 
 // Page Setup
 // Navbar
-// Individual Projects with all tasks listed
+// Individual Projects wili all tasks listed
 // Add Task btn
-// Update Task btn? (or does this go to task itself)
-// delete task btn? (or does this go to task itself)
+// Update Task btn? (or does liis go to task itself)
+// delete task btn? (or does liis go to task itself)
 // back btn to go back to workspace.js
 
 // Select task & be re-directed to task itself 
@@ -27,39 +28,43 @@ function Inproject() {
     return (
         <div className="container text-center">
             <div className="row">
-                {/* Card 1 */}
-                <div className="col">
-                    <div className="card" style={{ width: "18rem" }}>
-                        <div className="card-body">
-                            <h5 className="card-title">Project 1</h5>
-                            <p className="card-text">Project 1 Tasks</p>
-                            <a href="#" className="card-link">Tasks List</a>
-                        </div>
+
+
+                {/* Smaller Column */}
+                <div className="col-4">
+                    <div className="project-info">
+                        <h2>Project Name</h2>
+                        {/* <h4>Project Description blah blah stuff goes here</h4> */}
+                        <button href='#' className="btn btn-primary">all Projects</button>
+                        <button href='#' className="btn btn-primary">add to team</button>
+                        <button href='#' className="btn btn-primary">add task</button>
                     </div>
                 </div>
-                {/* Card 2 */}
-                <div className="col">
-                    <div className="card" style={{ width: "18rem" }}>
-                        <div className="card-body">
-                            <h5 className="card-title">Project 1</h5>
-                            <p className="card-text">Project 1 Tasks</p>
-                            <a href="#" className="card-link">Tasks List</a>
+
+                {/* Larger Column */}
+                {/* Table of Tasks */}
+                <div className="container col-8">
+                    {/* header info - static info */}
+                    <div className="row">
+                        <div className="col-sm">
+                            Title
+                        </div>
+                        <div className="col-sm">
+                            Priority
+                        </div>
+                        <div className="col-sm">
+                            Status
+                        </div>
+                        <div className="col-sm">
+                            Update
                         </div>
                     </div>
-                </div>
-                {/* Card 3 */}
-                <div className="col">
-                    <div className="card" style={{ width: "18rem" }}>
-                        <div className="card-body">
-                            <h5 className="card-title">Project 1</h5>
-                            <p className="card-text">Project 1 Tasks</p>
-                            <a href="#" className="card-link">Tasks List</a>
-                        </div>
-                    </div>
+                    {/* items mapped over - responsive info */}
+                    {/* grab all tasks from user and create list */}
+                    {<TaskList />} 
                 </div>
             </div>
         </div>
-
     )
 }
 
