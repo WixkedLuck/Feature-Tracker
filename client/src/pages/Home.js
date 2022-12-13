@@ -1,6 +1,6 @@
 import React from "react";
 
-const homeCSS = require('../stylesheets')
+import "../stylesheets/Workspace.css"
 
 export default function Home() {
 
