@@ -13,7 +13,7 @@ const projectSchema = new Schema({
         type: String,
       },
       tasks: [Task.schema],
-      team: [User.schema]
+      team: [User.schema],
 });
 
 const Project = mongoose.model('Project', projectSchema);

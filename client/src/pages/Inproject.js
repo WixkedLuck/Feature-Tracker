@@ -8,6 +8,7 @@
 
 // IMPORTS
 import React from "react";
+import TaskList from '../components/TaskItem';
 // import Navbar from "../components/Nav";
 // import TaskList form "../components/TaskList";
 // import ProjectItem from "../components/ProjectItem"
@@ -40,7 +41,6 @@ function Inproject() {
                     </div>
                 </div>
 
-
                 {/* Larger Column */}
                 {/* Table of Tasks */}
                 <div className="container col-8">
@@ -60,20 +60,8 @@ function Inproject() {
                         </div>
                     </div>
                     {/* items mapped over - responsive info */}
-                    <div className="row">
-                        <div className="col-sm">
-                            First Item Title
-                        </div>
-                        <div className="col-sm">
-                            First Item Priority
-                        </div>
-                        <div className="col-sm">
-                            First Item Status
-                        </div>
-                        <div className="col-sm">
-                        <button href='#' className="btn btn-primary">completed</button>
-                        </div>
-                    </div>
+                    {/* grab all tasks from user and create list */}
+                    {<TaskList />} 
                 </div>
             </div>
         </div>
