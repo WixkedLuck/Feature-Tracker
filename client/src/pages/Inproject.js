@@ -43,34 +43,34 @@ function Inproject() {
 
                 {/* Larger Column */}
                 {/* Table of Tasks */}
-                <div class="container col-8">
+                <div className="container col-8">
                     {/* header info - static info */}
-                    <div class="row">
-                        <div class="col-sm">
+                    <div className="row">
+                        <div className="col-sm">
                             Title
                         </div>
-                        <div class="col-sm">
+                        <div className="col-sm">
                             Priority
                         </div>
-                        <div class="col-sm">
+                        <div className="col-sm">
                             Status
                         </div>
-                        <div class="col-sm">
+                        <div className="col-sm">
                             Update
                         </div>
                     </div>
                     {/* items mapped over - responsive info */}
-                    <div class="row">
-                        <div class="col-sm">
+                    <div className="row">
+                        <div className="col-sm">
                             First Item Title
                         </div>
-                        <div class="col-sm">
+                        <div className="col-sm">
                             First Item Priority
                         </div>
-                        <div class="col-sm">
+                        <div className="col-sm">
                             First Item Status
                         </div>
-                        <div class="col-sm">
+                        <div className="col-sm">
                         <button href='#' className="btn btn-primary">completed</button>
                         </div>
                     </div>
