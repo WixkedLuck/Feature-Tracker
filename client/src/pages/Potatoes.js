@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Redirect() {
+export default function Potatoes() {
     return (
         <div class="container text-center p-4">
             <h1>Oh potatoes. That page doesn't exist!</h1>
