@@ -18,7 +18,7 @@ import './App.css';
 import Nav from './components/Nav';
 import Home from './pages/Home';
 import Potatoes from './pages/Potatoes';
-import {ProjectProvider} from './utils/GlobalState'
+// import {ProjectProvider} from './utils/GlobalState'
 
 
 const httpLink = createHttpLink({
