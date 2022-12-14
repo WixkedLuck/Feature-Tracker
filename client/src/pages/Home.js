@@ -1,22 +1,33 @@
 import React from "react";
 
-import "../stylesheets/Workspace.css"
 
+import "../stylesheets/Home.css"
+import Lottie from "lottie-react";
+import cat from "../lottie/cat.json";
 export default function Home() {
 
 
-return (
-      
+  return (
+
     <section className="home App" id="homepage">
-      <h1 className='Title'>SmolBytes App: </h1>
+      <Lottie className='sized' animationData={cat} loop={true} />
+      <h1 className='Title'>SmolBytes </h1>
+      
+      <div class="container mt-2 centerDiv">
+        <h2 className="subtitle">About us:</h2>
+        <p className="important">Have you ever bitten off more than you could chew? We’re here to help!</p>
+        <p className="card-body"> Our tool helps you break your project into manageable pieces for you and your teams to work on.
 
-    <div className="card" style={{ width: "18rem", backgroundColor: "rgba(32,33,36, 0.6)", color: "whitesmoke"}}>
-     <p className="card-body">SmolBytes is here to help you organize your project management tasks into smoller bytes.  The objective here is to help organize user information and create ease of use in daily life.</p>
+          Create multiple projects, each with a customizable team and a unique list of tasks. Tasks have different priority levels(high, medium, and low) and can be marked completed as you and your team progress.
+        </p>
+        <h3 className="padding2x">Don't be that one person on a team:</h3>
+        <p>"It's not a bug, it's a feature!"</p>
+        <p className="mt-5"> Get started today! plus it's free</p>
+        <a href="/login"><button type="button" className="btn btn-primary btn-lg padding" onclick="window.location.href='/login';">Login</button></a>
+      </div>
 
-     </div>
-   
-    <img className='photo' title='homepageimage' alt='homepage image' src="#"></img>
+
     </section>
-    ) 
-    
-    }
+  )
+
+}

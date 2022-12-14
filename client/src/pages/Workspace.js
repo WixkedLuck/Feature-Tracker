@@ -2,14 +2,15 @@
 import React from 'react';
 
 import "../stylesheets/Workspace.css";
-import people from '../images/people.svg';
+import Lottie from "lottie-react";
+import hacker from "../lottie/happy-hacker.json"
 
 function Workspace() {
   return (
     <div >
       <div class="container mt-5 header">
         <h1 className='h1x'>Workspaces</h1>
-        <img className='sized' alt='working-people' src={people}></img>
+        <Lottie className='sized' animationData={hacker} loop={true} />
       </div>
       <h2 className='h2x mt-5'>Your tracked Projects:</h2>
       {/* mock up of folders getting generated here  */}
@@ -38,7 +39,7 @@ function Workspace() {
   </div>
 </div>
 {/* add project section  */}
-<div class="container mt-5 header">
+<div class="container mt-5 header mb-5">
         <h1 className='h1x'>Create a new Project: </h1>
         {/* <!-- Button trigger modal --> */}
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
