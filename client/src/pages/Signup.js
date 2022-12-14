@@ -10,16 +10,16 @@ export default function Signup() {
         <form className="form signup-form">
           <div className="form-group">
           <h2>Signup</h2>
-            <label for="name-signup" id="name-signup-text">name:</label>
-            <input className="form-input" type={"text"} id="name-signup" />
+            <label for="name-signup" id="name-signup-text">Name:</label>
+            <input className="form-input" placeholder='John Doe' type={"text"} id="name-signup" />
           </div>
           <div className="form-group mt-1">
-            <label for="email-signup" id="email-signup-text" >email:</label>
-            <input className="form-input" type={"text"} id="email-signup" />
+            <label for="email-signup" id="email-signup-text" >Email:</label>
+            <input className="form-input" placeholder='Email@gmail.com' type={"text"} id="email-signup" />
           </div>
           <div className="form-group mt-1">
-            <label for="password-signup" id="password-signup-text" >password:</label>
-            <input className="form-input" type={"password"} id="password-signup" />
+            <label for="password-signup" id="password-signup-text" >Password:</label>
+            <input className="form-input" placeholder='********' type={"password"} id="password-signup" />
           </div>
           <div className="form-group mt-1">
            
