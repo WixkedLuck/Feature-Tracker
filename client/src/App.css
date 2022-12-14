@@ -4,13 +4,18 @@
 /* add colors and sizes here as well */
 .App {
   text-align: center;
-  /* background-color: rgb(32,33,32); */
-  font-family: 'Cinzel', serif ;
+  background-color: rgb(32,33,32);
+  
+  color: whitesmoke;
 }
 html{
   background-color: rgb(32,33,32);
   
 }
+h1,h2,h3,h4,h5{
+  font-family: 'Cinzel', serif ;
+}
+
 
 
 

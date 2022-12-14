@@ -21,7 +21,7 @@
 .col{
  font-size: 24px;
  color: whitesmoke;
- word-wrap: wrap; 
+ word-wrap: break-word; 
  border: rgb(32,33,32) 2px solid;
  background-color: #242424;
 }
