@@ -33,7 +33,7 @@ export default function Contact() {
       <input type="email" required placeholder='YourEmail@gmail.com' name="user_email" /><br></br>
       <label className='font' >Message</label>
       <textarea name="message" required placeholder='Awesome Site! I Love SmolByte!' /><br></br>
-      <input className='Btn'  type="submit" value="Send" />
+      <input className="btn btn-primary"  type="submit" value="Send" />
     </form>
     </div>
     );
