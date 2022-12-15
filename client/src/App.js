@@ -18,7 +18,7 @@ import './App.css';
 import Nav from './components/Nav';
 import Home from './pages/Home';
 import Potatoes from './pages/Potatoes';
-// import {ProjectProvider} from './utils/GlobalState'
+import {ProjectProvider} from './utils/GlobalState'
 
 
 const httpLink = createHttpLink({
@@ -45,11 +45,12 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+      
       <div className="App">
         <Nav />
         <Router>
           {/* this is our global helper below */}
-          {/* <ProjectProvider> */}
+          <ProjectProvider>
           <Routes>
             <Route
               path='/'
@@ -82,7 +83,7 @@ function App() {
             />
           </Routes>
           {/* bring this backin when we fix globalState */}
-          {/* </ProjectProvider> */}
+          </ProjectProvider>
         </Router>
       </div>
     </ApolloProvider>

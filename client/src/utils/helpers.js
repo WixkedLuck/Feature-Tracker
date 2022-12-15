@@ -35,6 +35,10 @@ export function idbPromise(projectName, method, object) {
         };
             // CRUD operations 
         switch (method) {
+          case 'post': 
+          project.post(object);
+          resolve(object);
+          break;
           case 'put':
             project.put(object);
             resolve(object);

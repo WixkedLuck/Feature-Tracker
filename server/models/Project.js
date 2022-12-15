@@ -14,9 +14,12 @@ const projectSchema = new Schema({
       },
       tasks: [{ type: Schema.Types.ObjectId,
         ref: 'Task',
-        required: true,
+        
         }],
-     team: [User.schema]
+     team: [{
+      type: Schema.Types.ObjectId,
+    ref: 'User',
+     }]
 });
 
 const Project = mongoose.model('Project', projectSchema);

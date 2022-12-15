@@ -8,7 +8,7 @@
  * - updates project array
  */
 
-export const ADD_PROJECT = 'ADD_PROJECT';
+export const CREATE_PROJECT = 'CREATE_PROJECT';
 
 /*
  * ADD_TASK:
@@ -48,3 +48,6 @@ export const UPDATE_TASK = 'UPDATE_TASK';
  * - updates project array
  */
 export const UPDATE_PROJECT = 'UPDATE_PROJECT';
+
+
+export const SET_PROJECT = 'SET_PROJECT';

@@ -23,7 +23,7 @@ export default function Home() {
         <h3 className="padding2x">Don't be that one person on a team:</h3>
         <p>"It's not a bug, it's a feature!"</p>
         <p className="mt-5"> Get started today! plus it's free</p>
-        <a href="/login"><button type="button" className="btn btn-primary btn-lg padding" onclick="window.location.href='/login';">Login</button></a>
+        <a href="/login"><button type="button" className="btn btn-primary btn-lg padding" >Login</button></a>
       </div>
 
 

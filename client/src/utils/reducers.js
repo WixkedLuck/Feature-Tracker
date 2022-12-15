@@ -1,23 +1,25 @@
 import { useReducer } from 'react';
 import {
-  ADD_PROJECT,
+  CREATE_PROJECT,
   ADD_TASK,
   REMOVE_TASK,
   UPDATE_TASK,
-  UPDATE_PROJECT
+  UPDATE_PROJECT,
+  SET_PROJECT
   // Add if other actions have been added to actions.js
 } from './actions';
 
 // Create a function that will handle combining two objects. Accepts state and an action as an argument.
 export default function reducer(state, action) {
-  // Depending on the action we create a new version of state after the desired action is performed
+  
+  
   switch (action.type) {
-    case ADD_PROJECT: {
+    case CREATE_PROJECT: {
       // Generate a unique id for this project
-      const newProjectId = createId(state.projects);
+      
 
       // Take a copy of the new project's data and add an id to it
-      const newProject = { ...action.payload, id: newProjectId };
+      const newProject = { ...action.payload};
 
       // Take a copy of state and assign the projects array to our updated array with the new project
       return {
@@ -27,10 +29,10 @@ export default function reducer(state, action) {
     }
     case ADD_TASK: {
    
-      const newTaskId = createId(state.tasks);
+     
 
    
-      const newTask = { ...action.payload, id: newTaskId };
+      const newTask = { ...action.payload };
 
      
       return {
@@ -71,6 +73,13 @@ export default function reducer(state, action) {
         tasks: newTasksList,
       };
     }
+    case SET_PROJECT:{
+      return {
+        ...state,
+        projects: action.payload,
+        
+      };
+    }
   
     case UPDATE_PROJECT: {
       // Find the index of the project who has an id that matches the one in the payload
@@ -102,4 +111,8 @@ export default function reducer(state, action) {
     default:
       return state;
   }
+};
+
+export function useProjectReducer(initialState) {
+  return useReducer(reducer, initialState);
 }
