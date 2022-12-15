@@ -1,13 +1,13 @@
 import React from "react";
 // import Auth from "../../utils/auth";
-// import { Link } from "react-router-dom";
+import "./Nav.css"
 import {GiSaberToothedCatHead } from "react-icons/gi";
 
 function Nav() {
     return (
         <nav className="navbar sticky-top navbar-expand-lg bg-dark ">
         <div className="container-fluid">
-          <h1 className="navbar-brand text-white fs-2" >SmolBytes <GiSaberToothedCatHead/></h1> 
+          <a className="text-decoration-none" href="/"><h1 className="navbar-brand text-white fs-2" >SmolBytes <GiSaberToothedCatHead/></h1></a> 
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
           </button>

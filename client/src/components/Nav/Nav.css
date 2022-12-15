@@ -1,0 +1,9 @@
+.nav-link{
+    font-size: larger !important;
+     
+}
+.nav-link:hover{
+    color: gray  !important;
+    border-bottom: greenyellow 2px solid;
+}
+
