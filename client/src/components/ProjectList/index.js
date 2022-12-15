@@ -40,7 +40,7 @@ function ProjectList() {
             <div class="col">
                 <h3>{item.name}</h3>
                 <p>{item.description}</p>
-                <Link to={`/projects/${item._id}`}><button type="button" class="btn btn-primary">Open Project</button> </Link>
+                <Link to={`/project/${item._id}`}><button type="button" class="btn btn-primary">Open Project</button> </Link>
             </div>
         ))
     );
