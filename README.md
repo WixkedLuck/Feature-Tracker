@@ -32,6 +32,6 @@ The purpose behind this project was to provide a platform for companies to share
 - BryanBorek
 - ElyLeslie
 
-
+![Workspace-Demo](./client/src/images/workspace.PNG)
 # Site
 Deployed Link: 
