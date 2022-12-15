@@ -1,0 +1,32 @@
+
+
+.trial{
+  
+    font-size: 24px;
+    overflow-wrap: break-word;
+    
+    
+}
+.team{
+    width: fit-content;
+    margin: auto;
+    
+}
+
+.sectionBreak{
+    border-radius: 41px;
+    background: #202120;
+    box-shadow:  41px 41px 82px #0e0f0e,
+                 -41px -41px 82px #323332;
+}
+
+.btn-pd{
+    margin: 10px;
+}
+
+.styled{
+    background: #202120;
+    box-shadow:  41px 41px 82px #0e0f0e,
+                 -41px -41px 82px #323332;
+
+}
