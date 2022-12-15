@@ -56,7 +56,7 @@ function Signup(props) {
           </div>
           <div className="form-group mt-1">
            
-            <button className="btn btn-primary mt-5" type={"submit"}>signup</button>
+            <button className="btn btn-primary mt-5" type={"submit"}>Signup</button>
           </div>
         </form>
     </div>

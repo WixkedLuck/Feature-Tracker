@@ -48,7 +48,7 @@ import Auth from '../utils/auth';
       <div className="form-group d-flex">
      
      
-        <button className="btn btn-primary center mt-3" type={"submit"}>login</button>
+        <button className="btn btn-primary center mt-3" type={"submit"}>Login</button>
       </div>
       <a className='mt-5' href="/signup">Sign-up</a>
       {error ? (
