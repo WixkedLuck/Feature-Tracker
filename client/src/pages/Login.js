@@ -12,12 +12,12 @@ export default function Login() {
       <div className="form-group">
 
         <label for="email-login" id="email-login-text" >Email:</label>
-        <input className="form-input" id="email-login"  placeholder='SomeEmail@gmail.com' type={"text"} />
+        <input className="form-input" id="email-login" required  placeholder='SomeEmail@gmail.com' type={"text"} />
       </div>
       <div className="form-group mt-1">
         <label for="password-login" id="password-login-text" >Password:</label>
 
-        <input className="form-input" id="password-login" placeholder='******' type={"password"} />
+        <input className="form-input" id="password-login" required placeholder='******' type={"password"} />
       </div>
       <div className="form-group d-flex">
      

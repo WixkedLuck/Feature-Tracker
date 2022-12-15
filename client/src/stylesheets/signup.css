@@ -1,10 +1,11 @@
 .signup-form{
     margin:auto;
+     display: inline-block;
     text-align: center;
     margin-top: 10vh;
     padding: 10vh;
-    display: block;
-    width: fit-content;
+    
+    
     border-radius: 41px;
     background: #202120;
     box-shadow:  41px 41px 82px #0e0f0e,
@@ -13,4 +14,9 @@
 
 .center{
     margin: auto;
+}
+
+label{
+    display: inline-block;
+    width: 30%;
 }
