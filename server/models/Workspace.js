@@ -11,7 +11,9 @@ const workspaceSchema = new Schema({
     description: {
         type: String,
       },
-      projects: [Project.schema]
+      projects: [{ 
+        type: Schema.Types.ObjectId,
+        ref: 'Project',}]
 });
 
 const Workspace = mongoose.model('Workspace', workspaceSchema);

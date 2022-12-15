@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 // Get All Projects
 export const QUERY_ALL_PROJECTS = gql`
-  {
+ query  {
     projects {
       _id
       name
@@ -32,18 +32,18 @@ export const QUERY_TASKS = gql`
 
 // get workspace & projects
 export const QUERY_WORKSPACE = gql`
-  {
-    workspaces {
-        _id
-        name
-        description
-        projects {
-            _id
-            name
-            description
-        }
+query Workspace {
+  workspace {
+    _id
+    description
+    name
+    projects {
+      _id
+      description
+      name
     }
   }
+} 
 `;
 
 // Get user & projects & tasks

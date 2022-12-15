@@ -1,6 +1,6 @@
 // Landing Page
 import React from 'react';
-
+import ProjectList from "../components/ProjectList/index"
 import "../stylesheets/Workspace.css";
 import Lottie from "lottie-react";
 import hacker from "../lottie/happy-hacker.json"
@@ -16,26 +16,9 @@ function Workspace() {
       {/* mock up of folders getting generated here  */}
       <div class="container text-center">
   <div class="row row-cols-2 mt-5">
-    <div class="col">
-      <h3>Project title</h3>
-      <p>Lorem</p>
-    <button type="button" class="btn btn-primary">Link to folder #1</button>
-    </div>
-    <div class="col">
-    <h3>Project title</h3>
-      <p>Lorem LoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLoremLorem</p>
-    <button type="button" class="btn btn-primary">Link to folder #2</button>
-    </div>
-    <div class="col">
-    <h3>Project title</h3>
-      <p>Lorem</p>
-    <button type="button" class="btn btn-primary">Link to folder...</button>
-    </div>
-    <div class="col">
-    <h3>Project title</h3>
-      <p>Lorem</p>
-    <button type="button" class="btn btn-primary">Continued...</button>
-    </div>
+ {/* place itema here  */}
+  <ProjectList/>
+
   </div>
 </div>
 {/* add project section  */}

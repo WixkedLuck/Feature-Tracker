@@ -1,12 +1,12 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Task, Project, User } = require('../models');
+const { Task, Project, User, Workspace } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
                                                     //queries here
     Query: {
         workspace: async () => {
-            return await Project.find();
+            return await Workspace.find().populate('projects');
         },
         project: async (parent, {tasks}) => {
             const params = {};

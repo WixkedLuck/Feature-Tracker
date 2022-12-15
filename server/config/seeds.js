@@ -1,29 +1,30 @@
 const db = require('./connection');
-const { Task, Project, User } = require('../models');
+
+const { Task, Project, User, Workspace } = require('../models');
 
 db.once('open', async () => {
 
     await Task.deleteMany();
 
-  await Task.insertMany([
+    const tasks = await Task.insertMany([
     {
       description:
         'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-      projects: Project,
+     
       status: false,
       priority: "Medium"
     },
     {
         description:
           'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-        projects: Project,
+        
         status: true,
         priority: "Low"
       },
       {
         description:
           'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-        projects: Project,
+        
         status: true,
         priority: "High"
       },
@@ -40,6 +41,8 @@ db.once('open', async () => {
     name: "Trusty Notetaker",
     description: "Create a personalized and fastastic note",
     tasks: []
+
+
   },
   {
     name: "Old video game simulator!",
@@ -57,12 +60,12 @@ db.once('open', async () => {
 
   await Workspace.deleteMany();
 
-  await Workspace.insertOne(
+  await Workspace.create(
     {
       name: 'Main Page',
       description:
         'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
-      projects: [projects[0]._id, projects[0]._id, projects[1]._id]
+      projects: [projects[0]._id.toString(), projects[1]._id.toString(), projects[2]._id.toString()]
     },
    );
 
@@ -73,17 +76,14 @@ db.once('open', async () => {
   await User.create({
     firstName: 'Susan',
     lastName: 'Davinci',
-    email: 'Susan@testmail.com',
-    password: 'password12345',
+    email: 'ALEX123@gmail.com',
+    password: 'password1234567',
     tasks: [
-      {
-        tasks: [tasks[0]._id, tasks[0]._id, tasks[1]._id]
-      }
+      tasks[0]._id.toString(), tasks[1]._id.toString(), tasks[2]._id.toString()
     ],
     projects: [
-        {
-            projects: [projects[0]._id, projects[0]._id, projects[1]._id]
-        }
+       projects[0]._id.toString(), projects[1]._id.toString(), projects[2]._id.toString()
+        
       ]
   });
 

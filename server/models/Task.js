@@ -10,7 +10,7 @@ const taskSchema = new Schema({
     project: {
         type: Schema.Types.ObjectId,
         ref: 'Project',
-        required: true,
+        required: false,
     },
     status: {
         type: Boolean,

@@ -10,6 +10,7 @@ const ProjectProvider = ({ value = [], ...props }) => {
     // To Do: Need to Review with team
     projects: [],
     tasks: [],
+    folder: {},
   });
 
   return <Provider value={[state, dispatch]} {...props} />;

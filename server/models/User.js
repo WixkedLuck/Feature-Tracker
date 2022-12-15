@@ -29,12 +29,12 @@ const userSchema = new Schema({
   tasks: [{
     type: Schema.Types.ObjectId,
     ref: 'Task',
-    required: true,
+    
   }],
   projects: [{
     type: Schema.Types.ObjectId,
     ref: 'Project',
-    required: true,
+    
   }],
 });
 
