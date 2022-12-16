@@ -51,9 +51,8 @@ function Login(props) {
             <a className='no-decoration' href="/signup">Sign-up</a></button>
         </div>
         {error ? (
-          <div>
-            <p className="error-text"> credentials are incorrect</p>
-            <p className="error-text"> try again</p>
+          <div className='mt-3'>
+            <p className='login-err-text'>Credentials are incorrect, try again?</p>
           </div>
         ) : null}
       </form>
