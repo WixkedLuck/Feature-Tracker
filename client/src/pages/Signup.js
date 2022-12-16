@@ -39,25 +39,28 @@ function Signup(props) {
         <form className="form signup-form " onSubmit={handleFormSubmit} >
           <div className="form-group">
           <h2>Signup</h2>
-            <label for="name-signup" id="name-signup-text">First Name:</label>
-            <input className="form-input " required placeholder='John' name="firstName"  type="firstName" id="fname-signup" onChange={handleChange} />
+            <label for="name-signup" id="name-signup-text"></label>
+            <input className="form-input " required placeholder='First Name' name="firstName"  type="firstName" id="fname-signup" onChange={handleChange} />
           </div>
           <div className="form-group mt-1">
-          <label for="name-signup" id="name-signup-text">Last Name:</label>
-            <input className="form-input " required  placeholder='Doe' name='lastName' type="lastName" onChange={handleChange} id="Lname-signup" />
+          <label for="name-signup" id="name-signup-text"></label>
+            <input className="form-input " required  placeholder='Last Name' name='lastName' type="lastName" onChange={handleChange} id="Lname-signup" />
           </div>
           <div className="form-group mt-1 ">
-            <label  for="email-signup" id="email-signup-text" >Email:</label>
-            <input className="form-input " required placeholder='Email@gmail.com' name='email' type="email" onChange={handleChange}id="email-signup" />
+            <label  for="email-signup" id="email-signup-text" ></label>
+            <input className="form-input " required placeholder='Email' name='email' type="email" onChange={handleChange}id="email-signup" />
           </div>
           <div className="form-group mt-1">
-            <label for="password-signup" id="password-signup-text" >Password:</label>
-            <input className="form-input" required placeholder='********'  name='password' type="password" onChange={handleChange} id="password-signup" />
+            <label for="password-signup" id="password-signup-text" ></label>
+            <input className="form-input" required placeholder='Password'  name='password' type="password" onChange={handleChange} id="password-signup" />
           </div>
           <div className="form-group mt-1">
            
             <button className="btn btn-primary mt-5" type={"submit"}>Signup</button>
           </div>
+          <div className="mt-2">
+      <a href="/login">Login</a>
+      </div>
         </form>
     </div>
     

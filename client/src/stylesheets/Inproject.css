@@ -1,4 +1,8 @@
-
+.btn-primary{
+    border: solid limegreen 4px !important;
+    background: #323332 !important;
+    border-radius: 25px !important;
+}
 
 .trial{
   
