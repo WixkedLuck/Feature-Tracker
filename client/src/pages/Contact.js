@@ -29,8 +29,8 @@ export default function Contact() {
       <h1 className='m-5'>Contact Us</h1>
       <input type="text" required placeholder='Name' name="user_name" /> <br></br>
       <input type="email" required placeholder='Email' name="user_email" /><br></br>
-      <label className='font' >Message</label>
-      <textarea className='m-1 contact-text' name="message" required placeholder='Awesome Site! I Love SmolByte!' /><br></br>
+      <label className='font m-1' >Message</label>
+      <textarea className='m-0 contact-text' name="message" required placeholder='Awesome Site! I Love SmolByte!' /><br></br>
       <input className="btn btn-primary m-5"  type="submit" value="Send" />
     </form>
     </div>
