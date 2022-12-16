@@ -65,3 +65,14 @@ export const QUERY_USER = gql`
     }
   }
 `;
+
+// Get All USERS 
+export const QUERY_ALLUSERS = gql`
+ query  {
+    users {
+      _id
+      firstName
+      lastName
+    }
+  }
+`;

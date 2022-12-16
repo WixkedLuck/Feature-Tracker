@@ -51,3 +51,12 @@ export const UPDATE_PROJECT = 'UPDATE_PROJECT';
 
 
 export const SET_PROJECT = 'SET_PROJECT';
+
+/*
+ * UPDATE USER:
+ * - takes object with id and updated values for project parameter(s)
+ * - finds USER based on ID and updates object
+ * - updates object in-place within copy of USER array
+ * - updates USER array
+ */
+export const UPDATE_ALLUSERS = 'UPDATE_ALLUSERS';
