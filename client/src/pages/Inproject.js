@@ -9,6 +9,7 @@
 // IMPORTS
 import React from "react";
 import { FaTrashAlt, FaHistory } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom'
 
 import TaskList from '../components/TaskItem';
 import "../stylesheets/Inproject.css"
@@ -28,16 +29,17 @@ import "../stylesheets/Inproject.css"
 // 
 
 function Inproject() {
+    const navigate = useNavigate()
     return (
-        <div className="container text-center mt-5">
-            <div className="row">
+        <div className="container d-flex text-center mt-5">
+            <div className="row d-flex" style={{ justifyContent: 'center', maxWidth: '100vw'}}>
 
 
                 {/* Smaller Column */}
-                <div className="col-4">
+                <div className="mb-4" style={{ maxWidth: '300px'}}>
                     <div className="project-info bg-lar">
                         <h2>Project Name</h2>
-                        <div className="sectionBreak">
+                        <div className="sectionBreak p-4">
                             <h4>Team:</h4>
                             <div class="container text-center">
                                 <div class="row">
@@ -58,12 +60,14 @@ function Inproject() {
                                 </div>
 
                             </div>
-                            <button href='#' className="btn btn-primary btn-pd">Edit team</button><br></br>
-                            <button href='#' className="btn btn-primary btn-pd"> ← Go Back</button>
+                            <div className="mt-2">
+                            <button href='#' className="btn btn-submit btn-pd">+ Team</button>
                             {/* this line is for the modal */}
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                Add Task
+                            <button type="button" class="btn btn-submit" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                + Task
                             </button>
+                            </div>
+                            <button onClick={() => navigate(-1)} className="btn btn-primary btn-pd m-0">← Go Back</button>
 
                             {/* <!-- Modal --> */}
                             <div class="modal fade bg-dark " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -116,7 +120,7 @@ function Inproject() {
 
                 {/* Larger Column */}
                 {/* Table of Tasks */}
-                <div className="container col-8">
+                <div className="container col d-flex" style={{ height: 'fit-content'}}>
                     {/* header info - static info */}
 
                     <table class="table table-dark table-striped trial">
