@@ -5,19 +5,18 @@ import {
   REMOVE_TASK,
   UPDATE_TASK,
   UPDATE_PROJECT,
-  SET_PROJECT
+  SET_PROJECT,
+  UPDATE_ALLUSERS
   // Add if other actions have been added to actions.js
 } from './actions';
 
 // Create a function that will handle combining two objects. Accepts state and an action as an argument.
 export default function reducer(state, action) {
-  
-  
+
   switch (action.type) {
     case CREATE_PROJECT: {
       // Generate a unique id for this project
       
-
       // Take a copy of the new project's data and add an id to it
       const newProject = { ...action.payload};
 
@@ -27,14 +26,22 @@ export default function reducer(state, action) {
         projects: [...state.projects, newProject],
       };
     }
-    case ADD_TASK: {
-   
-     
+    
+    // CASE TO ALLUSERS
+    case UPDATE_ALLUSERS: {
+      const allUsers = {...action.payload};
 
-   
+      return {
+        ...state,
+        users: [...state.users, allUsers],
+      };
+    }
+
+    // Adding a task 
+    case ADD_TASK: {
+
       const newTask = { ...action.payload };
 
-     
       return {
         ...state,
         tasks: [...state.tasks, newTask],
@@ -107,6 +114,7 @@ export default function reducer(state, action) {
         
       };
     }
+
     // Default to returning the state as is in our switch statement
     default:
       return state;

@@ -7,6 +7,7 @@ const typeDefs = gql`
     name: String
     description: String
     projects: [Project]
+    users: [User]
   }
 
   type Project {
