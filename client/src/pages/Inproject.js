@@ -120,7 +120,7 @@ function Inproject() {
 
                 {/* Larger Column */}
                 {/* Table of Tasks */}
-                <div className="container col d-flex" style={{ height: 'fit-content'}}>
+                <div className="container col d-flex task-table" style={{ height: 'fit-content'}}>
                     {/* header info - static info */}
 
                     <table class="table table-dark table-striped trial">
