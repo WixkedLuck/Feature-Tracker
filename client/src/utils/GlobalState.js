@@ -11,6 +11,7 @@ const ProjectProvider = ({ value = [], ...props }) => {
     projects: [],
     tasks: [],
     folder: {},
+    users: []
   });
 
   return <Provider value={[state, dispatch]} {...props} />;
