@@ -37,20 +37,22 @@ import Auth from '../utils/auth';
     <h2>Login</h2>
       <div className="form-group">
 
-        <label for="email-login" id="email-login-text" >Email:</label>
-        <input className="form-input" id="email-login" required  placeholder='SomeEmail@gmail.com' name="email" type="email" onChange={handleChange} />
+        <label for="email-login" id="email-login-text" ></label>
+        <input className="form-input" id="email-login" required  placeholder='Email' name="email" type="email" onChange={handleChange} />
       </div>
       <div className="form-group mt-1">
-        <label for="password-login" id="password-login-text" >Password:</label>
+        <label for="password-login" id="password-login-text" ></label>
 
-        <input className="form-input" id="password-login" required placeholder='******' name="password" type="password"  onChange={handleChange}/>
+        <input className="form-input" id="password-login" required placeholder='Password' name="password" type="password"  onChange={handleChange}/>
       </div>
-      <div className="form-group d-flex">
+      <div className="form-group d-flex mt-5">
      
      
-        <button className="btn btn-primary center mt-3" type={"submit"}>Login</button>
+        <button className="btn btn-primary center" type={"submit"}>Login</button>
       </div>
-      <a className='mt-5' href="/signup">Sign-up</a>
+      <div className="mt-2">
+      <a href="/signup">Sign-up</a>
+      </div>
       {error ? (
             <div>
             <p className="error-text"> credentials are incorrect</p>

@@ -60,7 +60,7 @@ function Inproject() {
                             </div>
                             <button href='#' className="btn btn-primary btn-pd">Edit team</button><br></br>
                             <button href='#' className="btn btn-primary btn-pd"> ← Go Back</button>
-                            {/* this line is for the model */}
+                            {/* this line is for the modal */}
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 Add Task
                             </button>
