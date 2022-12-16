@@ -7,26 +7,13 @@ import { useProjectContext } from '../../utils/GlobalState';
 //import action: you can think of an action as an event that describes something that happened in the application.
 import { SET_PROJECT} from '../../utils/actions';
 //import the query that we need for this section aka specific data needed from the database:
-import { QUERY_WORKSPACE, QUERY_ALL_USERS } from '../../utils/queries';
+import { QUERY_WORKSPACE, QUERY_ALL_USERS, USER_WORKSPACE } from '../../utils/queries';
 
 import { Link } from "react-router-dom";
 
 function ProjectList() {
-    const [state, dispatch] = useProjectContext();
-    const { projects } = state;
- 
-    const { loading, data } = useQuery(QUERY_WORKSPACE);
-
-    useEffect(() => {
-        if (data) {
-            // console.log(data);
-            dispatch({
-                type: SET_PROJECT,
-                payload: data.workspace[0].projects
-            });
-
-        } 
-    }, [data, loading, dispatch]);
+    const { loading, data } = useQuery(USER_WORKSPACE);
+    const projects = data?.user?.projects || []
 
     return (
 

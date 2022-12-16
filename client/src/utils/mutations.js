@@ -31,3 +31,12 @@ export const ADD_USER = gql`
     }
   }
 `;
+
+// copy & paste mutation from GraphQL
+export const CREATE_PROJECT = gql `
+mutation Mutation($name: String!, $description: String, $users: [ID]) {
+  createProject(name: $name, description: $description, users: $users) {
+    name
+  }
+}
+`
