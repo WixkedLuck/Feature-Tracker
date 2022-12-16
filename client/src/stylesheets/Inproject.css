@@ -1,7 +1,40 @@
+.no-decoration{
+    text-decoration: none !important;
+    color: unset;
+}
+
 .btn-primary{
     border: solid limegreen 4px !important;
     background: #323332 !important;
     border-radius: 25px !important;
+}
+
+a:hover{
+    color: white !important;
+}
+
+.btn-primary:hover{
+    color: white !important;
+    border: solid lightgreen 4px !important;
+    background: slategray !important;
+}
+
+.btn-submit{
+    text-decoration: none !important;
+    border: solid limegreen 4px !important;
+    color:#323332 !important;
+    background: limegreen !important;
+    border-radius: 25px !important;
+}
+
+.btn-submit:hover{
+    border: solid lightgreen 4px !important;
+    background: lightgreen !important;
+}
+
+.login-err-text{
+    font-size: small;
+    max-width: 170px;
 }
 
 .trial{
