@@ -8,17 +8,25 @@ const resolvers = {
         workspace: async () => {
             return await Workspace.find().populate('projects');
         },
-        project: async (parent, {tasks}) => {
-            const params = {};
-            if (tasks) {
-                params.tasks = tasks;
-            }
-            return await Project.find(params).populate('tasks');
+        project: async (parent, {_id}) => {
+            return await Project.findById(_id).populate('tasks');
         },
         task: async (parent, { _id }) => {
             return await Task.findById(_id);
         },
+        users: async () => {
+            return await User.find()
+        },
+        tasks: async () => {
+            return await Task.find()
+        },
+        user: async (parent, args, context) => {
+            // Showing the user's projects that they're assigned to
+            return await User.findById(context.user._id).populate('projects')
+        }
+        
     },
+    
                                                     //mutations here
     Mutation: {
         addUser: async (parent, args) => {
@@ -43,6 +51,16 @@ const resolvers = {
             }
             const token = signToken(user);
             return { token, user };
+        },
+        updateTask: async (parent, args, context) => {
+            return await Task.findByIdAndUpdate(args._id, {description: args.description, status: args.status, priority: args.priority});
+        },
+        deleteTask: async (parent, args, context) => {
+            return await Task.findByIdAndDelete(args._id)
+        },
+        createProject: async (parent, args, context) => {
+            const team = [...args.users, context.user._id]
+            return await Project.create({name: args.name, description: args.description, team });
         }
     }
 };

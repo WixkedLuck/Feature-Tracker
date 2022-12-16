@@ -1,35 +1,42 @@
 // Landing Page
-import React, { useEffect } from 'react';
-import { useQuery } from '@apollo/client';
+import React, { useEffect, useState } from 'react';
+import { useMutation, useQuery } from '@apollo/client';
 import ProjectList from "../components/ProjectList/index"
 import "../stylesheets/Workspace.css";
 import Lottie from "lottie-react";
 import hacker from "../lottie/happy-hacker.json"
 import { useProjectContext } from '../utils/GlobalState';
-import { UPDATE_ALLUSERS } from '../utils/actions';
-import { QUERY_ALLUSERS } from '../utils/queries';
-
-
-
-
+import { QUERY_ALLUSERS, USER_WORKSPACE } from '../utils/queries';
+import { CREATE_PROJECT } from '../utils/mutations';
 
 function Workspace() {
-  const [state, dispatch] = useProjectContext();
-  const { users } = state;
+  // renaming data var to project
+  const [createProject, {data: project}] = useMutation(CREATE_PROJECT, {
+    // when create project runs, UserWorkspace re-runs & gets the new project created
+    refetchQueries: [USER_WORKSPACE]
+  })
   const { loading, data } = useQuery(QUERY_ALLUSERS);
+  const { data: self } = useQuery(USER_WORKSPACE);
+  // data = users, users is an object underneath the query in queries.js files
+  const users = data?.users || []
+
+  const user = self?.user || {}
+
   console.log(users);
 
-  useEffect(() => {
-    console.log(data);
-    if (data) {
-      console.log(data);
-      dispatch({
-        type: UPDATE_ALLUSERS,
-        payload: data.users[0]
-      });
+  const [team, setTeam] = useState([])
+  const [name, setName] = useState('')
+  const [description, setDescription] = useState('')
 
-    }
-  }, [data, loading, dispatch]);
+  function onSubmit (e) {
+    e.preventDefault();
+    createProject({
+      variables: {
+        // must be users b/c of typedefs & mutations
+        name, description, users: team 
+      }
+    })
+  }
 
   return (
     <div >
@@ -66,22 +73,33 @@ function Workspace() {
                 <form id="survey-form" className='formcolor'>
 
                   <label htmlFor="name" id="name-label">Project Name:</label>
-                  <input type="text" id="name" required placeholder="Project: 1"></input>
+                  <input type="text" id="name" value={name} onChange={e => setName(e.target.value)} required placeholder="Project: 1"></input>
 
                   <label htmlFor="description" id="name-label">Project description:</label>
-                  <input type="text" id="description" required placeholder="Lorem Ipsum"></input>
+                  <input type="text" id="description" value={description} onChange={e => setDescription(e.target.value)} required placeholder="Lorem Ipsum"></input>
                   <p>Add teammates: OPTIONAL </p>
                   {/* NEED TO LOOP OVER ALL USERS IN DATABASE  */}
                   {console.log(users)}
-                  {/* {!!users.length && users.map((item) => (
+                  {!!users.length && users.filter(u => u._id != user._id).map((item) => (
                   <div>
-                    <input type="checkbox" id="front-end" value="Front-end Users"></input>
+                    <input type="checkbox" onChange={e => { 
+                      if (e.target.checked) {
+                        // item represent user
+                        // taking current state & creating new array, take current array & add new id
+                        setTeam(team => [...team, item._id])
+                        // might have to consider checking the array, to see if the id exist inside the array already (don't want to duplicate a user)
+                      } else {
+                        // filter creates new array
+                        // return everybody who is not of the id checked
+                        setTeam(team => team.filter(t => t != item._id))
+                      }
+                     }}   id="front-end" value="Front-end Users"></input>
                     <label for="front-end">{item.firstName}</label>
                   </div>
-                  ))} */}
+                  ))}
 
-                  <button type="submit" id="submit">Submit</button>
-
+                  <button type="submit" id="submit" onClick={onSubmit}>Submit</button>
+                     {/* Need to close modal & re-run workspace quiery form porject_list.js */}
                 </form>
               </div>
               <div className="modal-footer">
