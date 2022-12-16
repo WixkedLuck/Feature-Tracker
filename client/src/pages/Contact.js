@@ -25,15 +25,13 @@ export default function Contact() {
       
       <div>
        
-      <form className='contact-us' ref={form} onSubmit={sendEmail}>
-      <h1> Contact Us:</h1>
-      <label className='font'>Name</label>
-      <input type="text" required placeholder='John Doe' name="user_name" /> <br></br>
-      <label className='font'>Email</label>
-      <input type="email" required placeholder='YourEmail@gmail.com' name="user_email" /><br></br>
+      <form className='contact-us p-0 pt-4' ref={form} onSubmit={sendEmail}>
+      <h1 className='m-5'>Contact Us</h1>
+      <input type="text" required placeholder='Name' name="user_name" /> <br></br>
+      <input type="email" required placeholder='Email' name="user_email" /><br></br>
       <label className='font' >Message</label>
-      <textarea name="message" required placeholder='Awesome Site! I Love SmolByte!' /><br></br>
-      <input className="btn btn-primary"  type="submit" value="Send" />
+      <textarea className='m-1 contact-text' name="message" required placeholder='Awesome Site! I Love SmolByte!' /><br></br>
+      <input className="btn btn-primary m-5"  type="submit" value="Send" />
     </form>
     </div>
     );
