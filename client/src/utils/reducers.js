@@ -14,6 +14,7 @@ import {
 export default function reducer(state, action) {
 
   switch (action.type) {
+    // Return All Projects Created
     case CREATE_PROJECT: {
       // Generate a unique id for this project
       
@@ -26,7 +27,7 @@ export default function reducer(state, action) {
         projects: [...state.projects, newProject],
       };
     }
-    
+
     // CASE TO ALLUSERS
     case UPDATE_ALLUSERS: {
       const allUsers = {...action.payload};
