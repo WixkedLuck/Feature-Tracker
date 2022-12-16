@@ -67,8 +67,8 @@ export const QUERY_USER = gql`
 `;
 
 // Get All USERS 
-export const QUERY_ALLUSERS = gql`
- query  {
+export const QUERY_ALLUSERS = gql` 
+query {
     users {
       _id
       firstName
@@ -76,3 +76,17 @@ export const QUERY_ALLUSERS = gql`
     }
   }
 `;
+
+// Get User's Workspace
+export const USER_WORKSPACE = gql `
+query Query {
+  user {
+    _id
+    projects {
+      name
+      description
+      _id
+    }
+  }
+}
+`

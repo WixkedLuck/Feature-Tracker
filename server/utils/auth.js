@@ -21,6 +21,7 @@ module.exports = {
 
     try {
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
+      // context is req (request). We add user to request, & graphql has the request(which contains the user)
       req.user = data;
     } catch {
       console.log('Invalid token');
