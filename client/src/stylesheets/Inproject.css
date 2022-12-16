@@ -4,6 +4,25 @@
     border-radius: 25px !important;
 }
 
+.btn-primary:hover{
+    color: white !important;
+    border: solid lightgreen 4px !important;
+    background: slategray !important;
+}
+
+.btn-submit{
+    text-decoration: none !important;
+    border: solid limegreen 4px !important;
+    color:#323332 !important;
+    background: limegreen !important;
+    border-radius: 25px !important;
+}
+
+.no-decoration{
+    text-decoration: none !important;
+    color: unset;
+}
+
 .trial{
   
     font-size: 24px;

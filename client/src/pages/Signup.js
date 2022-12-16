@@ -54,13 +54,11 @@ function Signup(props) {
             <label for="password-signup" id="password-signup-text" ></label>
             <input className="form-input" required placeholder='Password'  name='password' type="password" onChange={handleChange} id="password-signup" />
           </div>
-          <div className="form-group mt-1">
-           
-            <button className="btn btn-primary mt-5" type={"submit"}>Signup</button>
-          </div>
-          <div className="mt-2">
-      <a href="/login">Login</a>
-      </div>
+          <div className="form-group d-flex mt-5">
+          <button className="btn btn-submit center" type={"submit"}>Sign-Up</button>
+          <button className="btn btn-primary center" type={"submit"}>
+            <a className='no-decoration' href="/login">Login</a></button>
+        </div>
         </form>
     </div>
     

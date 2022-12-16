@@ -4,7 +4,7 @@ import { useMutation } from '@apollo/client';
 import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
 
- function Login(props) {
+function Login(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error }] = useMutation(LOGIN);
 
@@ -29,39 +29,36 @@ import Auth from '../utils/auth';
     });
   };
 
-    return(
-        <div className="col-md-6 mx-auto mt-4">
-   
+  return (
+    <div className="col-md-6 mx-auto mt-4">
 
-    <form className="form login-form" onSubmit={handleFormSubmit}>
-    <h2>Login</h2>
-      <div className="form-group">
 
-        <label for="email-login" id="email-login-text" ></label>
-        <input className="form-input" id="email-login" required  placeholder='Email' name="email" type="email" onChange={handleChange} />
-      </div>
-      <div className="form-group mt-1">
-        <label for="password-login" id="password-login-text" ></label>
+      <form className="form login-form" onSubmit={handleFormSubmit}>
+        <h2>Login</h2>
+        <div className="form-group">
 
-        <input className="form-input" id="password-login" required placeholder='Password' name="password" type="password"  onChange={handleChange}/>
-      </div>
-      <div className="form-group d-flex mt-5">
-     
-     
-        <button className="btn btn-primary center" type={"submit"}>Login</button>
-      </div>
-      <div className="mt-2">
-      <a href="/signup">Sign-up</a>
-      </div>
-      {error ? (
-            <div>
+          <label for="email-login" id="email-login-text" ></label>
+          <input className="form-input" id="email-login" required placeholder='Email' name="email" type="email" onChange={handleChange} />
+        </div>
+        <div className="form-group mt-1">
+          <label for="password-login" id="password-login-text" ></label>
+
+          <input className="form-input" id="password-login" required placeholder='Password' name="password" type="password" onChange={handleChange} />
+        </div>
+        <div className="form-group d-flex mt-5">
+          <button className="btn btn-submit center" type={"submit"}>Login</button>
+          <button className="btn btn-primary center" type={"submit"}>
+            <a className='no-decoration' href="/signup">Sign-up</a></button>
+        </div>
+        {error ? (
+          <div>
             <p className="error-text"> credentials are incorrect</p>
             <p className="error-text"> try again</p>
-            </div>
+          </div>
         ) : null}
-    </form>
-</div>
-    )
+      </form>
+    </div>
+  )
 }
 
 export default Login;
