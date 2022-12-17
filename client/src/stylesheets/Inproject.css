@@ -37,6 +37,10 @@ a:hover{
     max-width: 170px;
 }
 
+.task-table{
+    display: block;
+}
+
 .trial{
   
     font-size: 24px;
