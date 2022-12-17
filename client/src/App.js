@@ -8,7 +8,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-import Task from './pages/Task';
+
 import Contact from './pages/Contact';
 import Inproject from './pages/Inproject';
 import Login from './pages/Login';
@@ -56,15 +56,18 @@ function App() {
               path='/'
               element={<Home />}
             />
+             { autth &&
             <Route
               path="/project/:id"
               element={<Inproject />}
-            />
+            /> } 
+            
            { autth &&
             <Route
               path="/workspace"
               element={<Workspace />}
-            /> }
+            /> 
+             } 
             <Route
               path="/Contact"
               element={<Contact />}
