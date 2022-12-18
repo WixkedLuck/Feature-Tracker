@@ -79,7 +79,7 @@ function Workspace() {
 
                   <label htmlFor="description" id="name-label">Project description:</label>
                   <input type="text" id="description" value={description} onChange={e => setDescription(e.target.value)} required placeholder="Lorem Ipsum"></input>
-                  <p>Add teammates: OPTIONAL </p>
+                  <p>Add teammates: Required </p>
                   {/* NEED TO LOOP OVER ALL USERS IN DATABASE  */}
                  
                   {!!users.length && users.filter(u => u._id !== user._id).map((item) => (

@@ -1,21 +1,18 @@
 import React from 'react';
-import { useQuery } from '@apollo/client';
-import { QUERY_TASKS } from "../../utils/queries";
 
-
-function TaskItem(item) {
+function TaskItem( description, priority, status ) {
 
 
     return (
         <div className="row">
             <div className="col-sm">
-                description
+                {description}
             </div>
             <div className="col-sm">
-                priority
+                {priority}
             </div>
             <div className="col-sm">
-                status
+                {status}
             </div>
             <div className="col-sm">
                 <button href='#' className="btn btn-primary">completed</button>
