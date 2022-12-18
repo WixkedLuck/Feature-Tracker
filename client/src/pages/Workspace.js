@@ -20,9 +20,9 @@ function Workspace() {
   // data = users, users is an object underneath the query in queries.js files
   const users = data?.users || []
 
-  const user = self?.user || {}
+  const user = self?.user || []
 
-  console.log(users);
+  
 
   const [team, setTeam] = useState([])
   const [name, setName] = useState('')
@@ -33,7 +33,9 @@ function Workspace() {
     createProject({
       variables: {
         // must be users b/c of typedefs & mutations
-        name, description, users: team 
+        name: name.name,
+         description: description.description,
+          users: team.team 
       }
     })
   }
@@ -62,7 +64,7 @@ function Workspace() {
         </button>
 
         {/* <!-- Modal --> */}
-        <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
@@ -79,8 +81,8 @@ function Workspace() {
                   <input type="text" id="description" value={description} onChange={e => setDescription(e.target.value)} required placeholder="Lorem Ipsum"></input>
                   <p>Add teammates: OPTIONAL </p>
                   {/* NEED TO LOOP OVER ALL USERS IN DATABASE  */}
-                  {console.log(users)}
-                  {!!users.length && users.filter(u => u._id != user._id).map((item) => (
+                 
+                  {!!users.length && users.filter(u => u._id !== user._id).map((item) => (
                   <div>
                     <input type="checkbox" onChange={e => { 
                       if (e.target.checked) {
@@ -91,14 +93,14 @@ function Workspace() {
                       } else {
                         // filter creates new array
                         // return everybody who is not of the id checked
-                        setTeam(team => team.filter(t => t != item._id))
+                        setTeam(team => team.filter(t => t !== item._id))
                       }
                      }}   id="front-end" value="Front-end Users"></input>
-                    <label for="front-end">{item.firstName}</label>
+                    <label htmlFor="front-end">{item.firstName}</label>
                   </div>
                   ))}
 
-                  <button type="submit" id="submit" onClick={onSubmit}>Submit</button>
+                  <button type="submit" id="submit" onClick={onSubmit}>Submits</button>
                      {/* Need to close modal & re-run workspace quiery form porject_list.js */}
                 </form>
               </div>
