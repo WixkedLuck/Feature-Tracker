@@ -7,12 +7,18 @@
 
 
 // IMPORTS
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaTrashAlt, FaHistory } from "react-icons/fa";
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
+import { useMutation, useQuery } from '@apollo/client';
 
-import TaskList from '../components/TaskItem';
-import "../stylesheets/Inproject.css"
+import TaskList from '../components/TaskList';
+import "../stylesheets/Inproject.css";
+
+import { QUERY_ALLUSERS, QUERY_TASKS } from '../utils/queries';
+import { CREATE_TASK } from '../utils/mutations';
+
+
 // import TaskList form "../components/TaskList";
 // import ProjectItem from "../components/ProjectItem"
 
@@ -30,13 +36,41 @@ import "../stylesheets/Inproject.css"
 
 function Inproject() {
     const navigate = useNavigate()
+
+    // const [createTask, { data: task }] = useMutation(CREATE_TASK, {
+    //     // when create project runs, UserWorkspace re-runs & gets the new project created
+    //     refetchQueries: [QUERY_TASKS]
+    // })
+    const { loading, data } = useQuery(QUERY_ALLUSERS);
+    const { data: self } = useQuery(QUERY_TASKS);
+    // data = users, users is an object underneath the query in queries.js files
+    const users = data?.users || []
+    const user = self?.user || []
+
+    const [team, setTeam] = useState([])
+    const [project, setProject] = useState('')
+    const [priority, setPriority] = useState('')
+    const [description, setDescription] = useState('')
+
+    // function onSubmit(e) {
+    //     e.preventDefault();
+    //     createTask({
+    //         variables: {
+    //             // must be users b/c of typedefs & mutations
+    //             description: description.description,
+    //             priority: priority.priority,
+    //             project: project.project
+    //         }
+    //     })
+    // }
+
     return (
         <div className="container d-flex text-center mt-5">
-            <div className="row d-flex" style={{ justifyContent: 'center', maxWidth: '100vw'}}>
+            <div className="row d-flex" style={{ justifyContent: 'center', maxWidth: '100vw' }}>
 
 
                 {/* Smaller Column */}
-                <div className="mb-4" style={{ maxWidth: '300px'}}>
+                <div className="mb-4" style={{ maxWidth: '300px' }}>
                     <div className="project-info bg-lar">
                         <h2>Project Name</h2>
                         <div className="sectionBreak p-4">
@@ -61,20 +95,23 @@ function Inproject() {
 
                             </div>
                             <div className="mt-2">
-                            <button href='#' className="btn btn-submit btn-pd">+ Team</button>
-                            {/* this line is for the modal */}
-                            <button type="button" class="btn btn-submit" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                + Task
-                            </button>
+                                {/* add team modal button */}
+                                <button type="button" class="btn btn-submit" data-bs-toggle="modal" data-bs-target="#addTeamModal">
+                                    + Team
+                                </button>
+                                {/* add task modal button */}
+                                <button type="button" class="btn btn-submit" data-bs-toggle="modal" data-bs-target="#addTaskModal">
+                                    + Task
+                                </button>
                             </div>
                             <button onClick={() => navigate(-1)} className="btn btn-primary btn-pd m-0">← Go Back</button>
 
-                            {/* <!-- Modal --> */}
-                            <div class="modal fade bg-dark " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            {/* <!-- Add Task Modal --> */}
+                            <div class="modal fade bg-dark " id="addTaskModal" tabindex="-1" aria-labelledby="addTaskLabel" aria-hidden="true">
                                 <div class="modal-dialog ">
                                     <div class="modal-content styled mt-5">
                                         <div class="modal-header">
-                                            <h1 class="modal-title fs-5 ftcolor" id="exampleModalLabel">Create new Task:</h1>
+                                            <h1 class="modal-title fs-5 ftcolor" id="addTaskLabel">Create new Task:</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
@@ -89,6 +126,50 @@ function Inproject() {
                                                     <option value="Medium">Medium</option>
                                                     <option value="High">High</option>
                                                 </select><br></br>
+
+
+                                                <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* end modal */}
+
+                            {/* <!-- Add Team Modal --> */}
+                            <div class="modal fade bg-dark " id="addTeamModal" tabindex="-1" aria-labelledby="addTeamLabel" aria-hidden="true">
+                                <div class="modal-dialog ">
+                                    <div class="modal-content styled mt-5">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5 ftcolor" id="addTeamLabel">Add to this Team:</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="survey-form" className='formcolor'>
+
+                                                {!!users.length && users.filter(u => u._id !== user._id).map((item) => (
+                                                    <div>
+                                                        <input type="checkbox" onChange={e => {
+                                                            if (e.target.checked) {
+                                                                // item represent user
+                                                                // taking current state & creating new array, take current array & add new id
+                                                                setTeam(team => [...team, item._id])
+                                                                // might have to consider checking the array, to see if the id exist inside the array already (don't want to duplicate a user)
+                                                            } else {
+                                                                // filter creates new array
+                                                                // return everybody who is not of the id checked
+                                                                setTeam(team => team.filter(t => t !== item._id))
+                                                            }
+                                                        }} id="front-end" value="Front-end Users"></input>
+                                                        <label htmlFor="front-end">{item.firstName}</label>
+                                                    </div>
+                                                ))}
 
 
                                                 <button type="submit" class="btn btn-primary" id="submit">Submit</button>
@@ -120,7 +201,7 @@ function Inproject() {
 
                 {/* Larger Column */}
                 {/* Table of Tasks */}
-                <div className="container col d-flex task-table" style={{ height: 'fit-content'}}>
+                <div className="container col d-flex task-table" style={{ height: 'fit-content' }}>
                     {/* header info - static info */}
 
                     <table class="table table-dark table-striped trial">
@@ -135,19 +216,19 @@ function Inproject() {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            {/* <tr>
                                 <td>This is a Description of the problem This is a Description of the problem</td>
                                 <td>High</td>
                                 <td>Completed</td>
                                 <td><button className="btn btn-primary btn-pd"><FaHistory /></button></td>
                                 <td><button className="btn btn-primary btn-pd"><FaTrashAlt /></button></td>
-                            </tr>
-                           
+                            </tr> */}
+
+                        {<TaskList />} 
                         </tbody>
                     </table>
                     {/* items mapped over - responsive info */}
                     {/* grab all tasks from user and create list */}
-                    {/* {<TaskList />}  */}
                 </div>
             </div>
 
