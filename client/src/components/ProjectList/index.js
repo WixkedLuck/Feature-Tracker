@@ -18,10 +18,10 @@ function ProjectList() {
     return (
 
         !!projects.length && projects.map((item) => (
-            <div class="col">
+            <div className="col">
                 <h3>{item.name}</h3>
                 <p>{item.description}</p>
-                <Link to={`/project/${item._id}`}><button type="button" class="btn btn-primary">Open Project</button> </Link>
+                <Link to={`/project/${item._id}`}><button type="button" className="btn btn-primary">Open Project</button> </Link>
             </div>
         ))
     );

@@ -8,7 +8,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-import Task from './pages/Task';
+
 import Contact from './pages/Contact';
 import Inproject from './pages/Inproject';
 import Login from './pages/Login';
@@ -20,6 +20,7 @@ import Home from './pages/Home';
 import Potatoes from './pages/Potatoes';
 import {ProjectProvider} from './utils/GlobalState'
 
+import auth from './utils/auth';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -39,8 +40,7 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
-
-
+const autth=auth.loggedIn();
 
 function App() {
   return (
@@ -56,14 +56,18 @@ function App() {
               path='/'
               element={<Home />}
             />
+             { autth &&
             <Route
               path="/project/:id"
               element={<Inproject />}
-            />
+            /> } 
+            
+           { autth &&
             <Route
               path="/workspace"
               element={<Workspace />}
-            />
+            /> 
+             } 
             <Route
               path="/Contact"
               element={<Contact />}

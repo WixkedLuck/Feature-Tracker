@@ -54,10 +54,14 @@ const typeDefs = gql`
     addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     updateUser(firstName: String, lastName: String, email: String, password: String): User
     login(email: String!, password: String!): Auth
+    createTask(description: String, status: Boolean, priority: String!): Task
     updateTask(_id: ID!, description: String, status: Boolean, priority: String ): Task
     deleteTask(_id: ID!): Task
     createProject(name: String!, description: String, users:[ID]): Project
+    updateProject(_id: ID!, users:[ID]): Project
   }
 `;
 
 module.exports = typeDefs;
+
+// Molly 12/17 - Added updateProject Mutation, Added createTask Mutation 
