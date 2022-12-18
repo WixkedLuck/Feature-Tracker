@@ -2,7 +2,8 @@ const jwt = require('jsonwebtoken');
 
 // set token secret and expiration date
 const secret = 'mysecretsshhhhh';
-const expiration = '2h';
+// const expiration = '2h';
+const expiration = '48h';
 
 module.exports = {
   // function for our authenticated routes
@@ -25,6 +26,7 @@ module.exports = {
       req.user = data;
     } catch {
       console.log('Invalid token');
+      // console.log( "-------------------- OH NO please stop repeating  --------------------"); 
     }
 
     return req;

@@ -63,12 +63,16 @@ const resolvers = {
             return await Project.create({name: args.name, description: args.description, team });
         },
         // Molly 12/17 - Added updateProject Mutation, Added createTask Mutation
-        updateProject: async (parent, args, context) => {
-            const team = [...args.users, context.user._id]
-            return await Project.findByIdAndUpdate({name: args.name, description: args.description, team });
-        },
+        // Molly 12/18 - Removing UpdateProject for now
+
+        // updateProject: async (parent, args, context) => {
+        //     const team = [...args.users, context.user._id]
+        //     return await Project.findByIdAndUpdate({name: args.name, description: args.description, team });
+        // },
+
         createTask: async (parent, args, context) => {
-            return await Task.create({description: args.description, status: args.status, priority: args.priority})
+            const project = [...args.project, context.project._id]
+            return await Task.create({description: args.description, status: args.status, priority: args.priority, project})
         },
     }
 };
