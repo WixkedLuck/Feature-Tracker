@@ -30,6 +30,18 @@ export const QUERY_TASKS = gql`
   }
 `;
 
+// 12/17 - Molly added below (This will get all tasks without relation to a project)
+export const QUERY_ALL_TASKS = gql `
+query Tasks {
+  tasks {
+    _id
+    description
+    priority
+    status
+  }
+}
+`
+
 // get workspace & projects
 export const QUERY_WORKSPACE = gql`
 query Workspace {

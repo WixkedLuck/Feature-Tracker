@@ -42,16 +42,17 @@ mutation Mutation($name: String!, $description: String, $users: [ID]) {
 `
 
 // Molly 12/17 - Added updateProject Mutation, Added createTask Mutation, Added updateTask, Added deleteTask
-export const UPDATE_PROJECT = `
-mutation UpdateProject($id: ID!, $users: [ID]) {
-  updateProject(_id: $id, users: $users) {
-    team {
-      firstName
-      lastName
-    }
-  }
-}
-`
+// Molly 12/18 - Removed Update_Project for now. 
+// export const UPDATE_PROJECT = `
+// mutation UpdateProject($id: ID!, $users: [ID]) {
+//   updateProject(_id: $id, users: $users) {
+//     team {
+//       firstName
+//       lastName
+//     }
+//   }
+// }
+// `
 
 export const CREATE_TASK = `
 mutation Mutation($priority: String!, $status: Boolean, $description: String) {
