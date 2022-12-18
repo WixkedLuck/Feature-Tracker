@@ -75,20 +75,20 @@ function Inproject() {
                         <h2>Project Name</h2>
                         <div className="sectionBreak p-4">
                             <h4>Team:</h4>
-                            <div class="container text-center">
-                                <div class="row">
-                                    <div class="col">
+                            <div className="container text-center">
+                                <div className="row">
+                                    <div className="col">
                                         David
                                     </div>
-                                    <div class="col">
+                                    <div className="col">
                                         Molly
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col">
+                                <div className="row">
+                                    <div className="col">
                                         Bryan
                                     </div>
-                                    <div class="col">
+                                    <div className="col">
                                         Ely
                                     </div>
                                 </div>
@@ -96,25 +96,25 @@ function Inproject() {
                             </div>
                             <div className="mt-2">
                                 {/* add team modal button */}
-                                <button type="button" class="btn btn-submit" data-bs-toggle="modal" data-bs-target="#addTeamModal">
+                                <button type="button" className="btn btn-submit" data-bs-toggle="modal" data-bs-target="#addTeamModal">
                                     + Team
                                 </button>
                                 {/* add task modal button */}
-                                <button type="button" class="btn btn-submit" data-bs-toggle="modal" data-bs-target="#addTaskModal">
+                                <button type="button" className="btn btn-submit" data-bs-toggle="modal" data-bs-target="#addTaskModal">
                                     + Task
                                 </button>
                             </div>
                             <button onClick={() => navigate(-1)} className="btn btn-primary btn-pd m-0">← Go Back</button>
 
                             {/* <!-- Add Task Modal --> */}
-                            <div class="modal fade bg-dark " id="addTaskModal" tabindex="-1" aria-labelledby="addTaskLabel" aria-hidden="true">
-                                <div class="modal-dialog ">
-                                    <div class="modal-content styled mt-5">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5 ftcolor" id="addTaskLabel">Create new Task:</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div className="modal fade bg-dark " id="addTaskModal" tabindex="-1" aria-labelledby="addTaskLabel" aria-hidden="true">
+                                <div className="modal-dialog ">
+                                    <div className="modal-content styled mt-5">
+                                        <div className="modal-header">
+                                            <h1 className="modal-title fs-5 ftcolor" id="addTaskLabel">Create new Task:</h1>
+                                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <div class="modal-body">
+                                        <div className="modal-body">
                                             <form id="survey-form" className='formcolor'>
 
                                                 <label for="name" id="name-label">Task Description:</label>
@@ -128,12 +128,12 @@ function Inproject() {
                                                 </select><br></br>
 
 
-                                                <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                                                <button type="submit" className="btn btn-primary" id="submit">Submit</button>
 
                                             </form>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <div className="modal-footer">
+                                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
                                         </div>
                                     </div>
@@ -143,14 +143,14 @@ function Inproject() {
                             {/* end modal */}
 
                             {/* <!-- Add Team Modal --> */}
-                            <div class="modal fade bg-dark " id="addTeamModal" tabindex="-1" aria-labelledby="addTeamLabel" aria-hidden="true">
-                                <div class="modal-dialog ">
-                                    <div class="modal-content styled mt-5">
-                                        <div class="modal-header">
-                                            <h1 class="modal-title fs-5 ftcolor" id="addTeamLabel">Add to this Team:</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div className="modal fade bg-dark " id="addTeamModal" tabindex="-1" aria-labelledby="addTeamLabel" aria-hidden="true">
+                                <div className="modal-dialog ">
+                                    <div className="modal-content styled mt-5">
+                                        <div className="modal-header">
+                                            <h1 className="modal-title fs-5 ftcolor" id="addTeamLabel">Add to this Team:</h1>
+                                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <div class="modal-body">
+                                        <div className="modal-body">
                                             <form id="survey-form" className='formcolor'>
 
                                                 {!!users.length && users.filter(u => u._id !== user._id).map((item) => (
@@ -172,12 +172,12 @@ function Inproject() {
                                                 ))}
 
 
-                                                <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                                                <button type="submit" className="btn btn-primary" id="submit">Submit</button>
 
                                             </form>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <div className="modal-footer">
+                                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
                                         </div>
                                     </div>
@@ -204,7 +204,7 @@ function Inproject() {
                 <div className="container col d-flex task-table" style={{ height: 'fit-content' }}>
                     {/* header info - static info */}
 
-                    <table class="table table-dark table-striped trial">
+                    <table className="table table-dark table-striped trial">
                         <thead>
                             <tr>
 
@@ -216,16 +216,10 @@ function Inproject() {
                             </tr>
                         </thead>
                         <tbody>
-                            {/* <tr>
-                                <td>This is a Description of the problem This is a Description of the problem</td>
-                                <td>High</td>
-                                <td>Completed</td>
-                                <td><button className="btn btn-primary btn-pd"><FaHistory /></button></td>
-                                <td><button className="btn btn-primary btn-pd"><FaTrashAlt /></button></td>
-                            </tr> */}
 
                         {<TaskList />} 
-                        </tbody>
+
+                        </tbody> 
                     </table>
                     {/* items mapped over - responsive info */}
                     {/* grab all tasks from user and create list */}
