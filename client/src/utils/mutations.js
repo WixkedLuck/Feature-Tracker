@@ -74,7 +74,7 @@ mutation Mutation($id: ID!, $description: String, $status: Boolean, $priority: S
 }
 `
 
-export const DELETE_TASK = `
+export const DELETE_TASK = gql `
 mutation Mutation($id: ID!) {
   deleteTask(_id: $id) {
     _id
