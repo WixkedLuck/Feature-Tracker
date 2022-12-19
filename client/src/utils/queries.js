@@ -116,3 +116,14 @@ query Query($id: ID!) {
   }
 }
 `
+
+// Getting Project Name based on Project ID
+export const QUERY_PROJECT_ID = gql `
+query Query($id: ID!) {
+  project(_id: $id) {
+    _id
+    description
+    name
+  }
+}
+`
