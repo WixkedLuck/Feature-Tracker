@@ -17,6 +17,7 @@ import "../stylesheets/Inproject.css";
 
 import { QUERY_ALLUSERS, QUERY_TASKS } from '../utils/queries';
 import { CREATE_TASK } from '../utils/mutations';
+import { useParams } from "react-router-dom";
 
 
 // import TaskList form "../components/TaskList";
@@ -36,7 +37,8 @@ import { CREATE_TASK } from '../utils/mutations';
 
 function Inproject() {
     const navigate = useNavigate()
-
+    const { id } = useParams();
+    console.log(id);
     // const [createTask, { data: task }] = useMutation(CREATE_TASK, {
     //     // when create project runs, UserWorkspace re-runs & gets the new project created
     //     refetchQueries: [QUERY_TASKS]
@@ -188,7 +190,41 @@ function Inproject() {
 
 
 
+                            {/* <!-- Add Task Modal --> */}
+                            <div className="modal fade bg-dark " id="updateTaskModal" tabindex="-1" aria-labelledby="updateTaskLabel" aria-hidden="true">
+                                <div className="modal-dialog ">
+                                    <div className="modal-content styled mt-5">
+                                        <div className="modal-header">
+                                            <h1 className="modal-title fs-5 ftcolor" id="updateTaskLabel">Create new Task:</h1>
+                                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div className="modal-body">
+                                            <form id="survey-form" className='formcolor'>
 
+                                                <label for="name" id="name-label">Task Description:</label>
+                                                <textarea name="message" required placeholder='Enter updated description' /><br></br>
+
+                                                <label for="description" id="name-label">Task Priority:</label>
+                                                <select value="newBugPriority">
+                                                    <option value="Low">Low</option>
+                                                    <option value="Medium">Medium</option>
+                                                    <option value="High">High</option>
+                                                </select><br></br>
+
+
+                                                <button type="submit" className="btn btn-primary" id="submit">Submit</button>
+
+                                            </form>
+                                        </div>
+                                        <div className="modal-footer">
+                                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* end modal */}
 
 
 
@@ -225,10 +261,6 @@ function Inproject() {
                     {/* grab all tasks from user and create list */}
                 </div>
             </div>
-
-
-
-
         </div>
     )
 }
