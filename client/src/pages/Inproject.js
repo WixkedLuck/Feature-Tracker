@@ -8,14 +8,14 @@
 
 // IMPORTS
 import React, { useEffect, useState } from "react";
-import { FaTrashAlt, FaHistory } from "react-icons/fa";
+
 import { useNavigate } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client';
 
 import TaskList from '../components/TaskList';
 import "../stylesheets/Inproject.css";
 
-import { QUERY_ALLUSERS, QUERY_TASKS } from '../utils/queries';
+import {  QUERY_TASKS, QUERY_PROJECT_TASKS, QUERY_ALLUSERS} from '../utils/queries';
 import { CREATE_TASK, DELETE_TASK } from '../utils/mutations';
 import { useParams } from "react-router-dom";
 
@@ -38,6 +38,13 @@ import { useParams } from "react-router-dom";
 function Inproject() {
     const navigate = useNavigate()
     const { id } = useParams();
+    
+//create task 
+const [createTask, {data: creatingTask}] = useMutation(CREATE_TASK, {
+    // when create project runs, UserWorkspace re-runs & gets the new project created
+    refetchQueries: [QUERY_PROJECT_TASKS]
+  })
+ 
     console.log(id);
     // const [createTask, { data: task }] = useMutation(CREATE_TASK, {
     //     // when create project runs, UserWorkspace re-runs & gets the new project created
@@ -50,14 +57,22 @@ function Inproject() {
     const users = data?.users || []
     const user = self?.user || []
 
-    const [team, setTeam] = useState([])
-    const [project, setProject] = useState('')
-    const [priority, setPriority] = useState('')
-    const [description, setDescription] = useState('')
+  const [Priority, setPriority] = useState('')
+  const valid=true;
+  const [description, setDescription] = useState('')
+  // data = users, users is an object underneath the query in queries.js files
+  function onSubmit (e) {
+    e.preventDefault();
+    createTask({
+      variables: {
+        // must be users b/c of typedefs & mutations
+         priority: Priority,
+         status: valid,
+         description: description,
+         project: id.toString() }
+      })}
 
-     function handleDeleteTask() {
-
-     }
+    
 
     // function onSubmit(e) {
     //     e.preventDefault();
@@ -125,17 +140,17 @@ function Inproject() {
                                             <form id="survey-form" className='formcolor'>
 
                                                 <label for="name" id="name-label">Task Description:</label>
-                                                <textarea name="message" required placeholder='\\TODO' /><br></br>
+                                                <textarea name="message" onChange={e => setDescription(e.target.value)} required placeholder='\\TODO' /><br></br>
 
                                                 <label for="description" id="name-label">Task Priority:</label>
-                                                <select value="newBugPriority">
+                                                <select value="newBugPriority" onChange={e => setPriority(e.target.value)}>
                                                     <option value="Low">Low</option>
                                                     <option value="Medium">Medium</option>
                                                     <option value="High">High</option>
                                                 </select><br></br>
 
 
-                                                <button type="submit" className="btn btn-primary" id="submit">Submit</button>
+                                                <button onClick={onSubmit} type="submit" className="btn btn-primary" id="submit">Submit</button>
 
                                             </form>
                                         </div>
@@ -147,51 +162,7 @@ function Inproject() {
                                 </div>
                             </div>
 
-                            {/* end modal */}
-
-                            {/* <!-- Add Team Modal --> */}
-                            <div className="modal fade bg-dark " id="addTeamModal" tabindex="-1" aria-labelledby="addTeamLabel" aria-hidden="true">
-                                <div className="modal-dialog ">
-                                    <div className="modal-content styled mt-5">
-                                        <div className="modal-header">
-                                            <h1 className="modal-title fs-5 ftcolor" id="addTeamLabel">Add to this Team:</h1>
-                                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div className="modal-body">
-                                            <form id="survey-form" className='formcolor'>
-
-                                                {!!users.length && users.filter(u => u._id !== user._id).map((item) => (
-                                                    <div>
-                                                        <input type="checkbox" onChange={e => {
-                                                            if (e.target.checked) {
-                                                                // item represent user
-                                                                // taking current state & creating new array, take current array & add new id
-                                                                setTeam(team => [...team, item._id])
-                                                                // might have to consider checking the array, to see if the id exist inside the array already (don't want to duplicate a user)
-                                                            } else {
-                                                                // filter creates new array
-                                                                // return everybody who is not of the id checked
-                                                                setTeam(team => team.filter(t => t !== item._id))
-                                                            }
-                                                        }} id="front-end" value="Front-end Users"></input>
-                                                        <label htmlFor="front-end">{item.firstName}</label>
-                                                    </div>
-                                                ))}
-
-
-                                                <button type="submit" className="btn btn-primary" id="submit">Submit</button>
-
-                                            </form>
-                                        </div>
-                                        <div className="modal-footer">
-                                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* end modal */}
+                            
 
 
 

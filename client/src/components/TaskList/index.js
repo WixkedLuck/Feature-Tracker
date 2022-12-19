@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useMutation, useQuery } from '@apollo/client';
 import { QUERY_PROJECT_TASKS } from '../../utils/queries';
-import { idbPromise } from '../../utils/helpers';
+
 import { FaTrashAlt, FaHistory } from "react-icons/fa";
-import TaskItem from '../TaskItem';
+
 import { useParams } from "react-router-dom";
 import { CREATE_TASK, DELETE_TASK } from '../../utils/mutations';
 
@@ -16,11 +16,12 @@ export default function TaskList({ id }) {
     });
 
     return (
-        !!data?.project?.tasks.length && data?.project?.tasks.map((task) => (
+        !!data?.project?.tasks.length && data?.project?.tasks.map((task)  => (
+           
             <tr>
                 <td>{task.description}</td>
                 <td>{task.priority}</td>
-                <td>{task.status}</td>
+                <td>{task.status.toString()}</td>
                 {/* add task modal button */}
                 <td><button type="button" className="btn btn-submit btn-pd" data-bs-toggle="modal" data-bs-target="#updateTaskModal"><FaHistory /></button></td>
                 <td><form onSubmit={e => {
