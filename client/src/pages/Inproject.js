@@ -15,7 +15,7 @@ import { useMutation, useQuery } from '@apollo/client';
 import TaskList from '../components/TaskList';
 import "../stylesheets/Inproject.css";
 
-import {  QUERY_TASKS, QUERY_PROJECT_TASKS } from '../utils/queries';
+import {  QUERY_TASKS, QUERY_PROJECT_TASKS, QUERY_ALLUSERS} from '../utils/queries';
 import { CREATE_TASK, DELETE_TASK } from '../utils/mutations';
 import { useParams } from "react-router-dom";
 
@@ -45,6 +45,17 @@ const [createTask, {data: creatingTask}] = useMutation(CREATE_TASK, {
     refetchQueries: [QUERY_PROJECT_TASKS]
   })
  
+    console.log(id);
+    // const [createTask, { data: task }] = useMutation(CREATE_TASK, {
+    //     // when create project runs, UserWorkspace re-runs & gets the new project created
+    //     refetchQueries: [QUERY_TASKS]
+    // })
+    // const [deleteTask, {data: task }] = useMutation(DELETE_TASK)
+    const { loading, data } = useQuery(QUERY_ALLUSERS);
+    const { data: self } = useQuery(QUERY_TASKS);
+    // data = users, users is an object underneath the query in queries.js files
+    const users = data?.users || []
+    const user = self?.user || []
 
   const [Priority, setPriority] = useState('')
   const valid=true;
@@ -58,18 +69,11 @@ const [createTask, {data: creatingTask}] = useMutation(CREATE_TASK, {
          priority: Priority,
          status: valid,
          description: description,
-         project: id.toString() 
-
-       
-      }
-    })
-  }
-
-
- 
-
+         project: id.toString() }
+      })}
 
     
+
     // function onSubmit(e) {
     //     e.preventDefault();
     //     createTask({
@@ -162,12 +166,12 @@ const [createTask, {data: creatingTask}] = useMutation(CREATE_TASK, {
 
 
 
-                            {/* <!-- Add Task Modal --> */}
+                            {/* <!-- Update Task Modal --> */}
                             <div className="modal fade bg-dark " id="updateTaskModal" tabindex="-1" aria-labelledby="updateTaskLabel" aria-hidden="true">
                                 <div className="modal-dialog ">
                                     <div className="modal-content styled mt-5">
                                         <div className="modal-header">
-                                            <h1 className="modal-title fs-5 ftcolor" id="updateTaskLabel">Create new Task:</h1>
+                                            <h1 className="modal-title fs-5 ftcolor" id="updateTaskLabel">Update Task:</h1>
                                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div className="modal-body">
