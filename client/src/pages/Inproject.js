@@ -15,9 +15,10 @@ import { useMutation, useQuery } from '@apollo/client';
 import TaskList from '../components/TaskList';
 import "../stylesheets/Inproject.css";
 
-import {  QUERY_TASKS, QUERY_PROJECT_TASKS, QUERY_ALLUSERS} from '../utils/queries';
+import { QUERY_TASKS, QUERY_PROJECT_TASKS, QUERY_ALLUSERS, QUERY_PROJECT_ID } from '../utils/queries';
 import { CREATE_TASK, DELETE_TASK } from '../utils/mutations';
 import { useParams } from "react-router-dom";
+import { UPDATE_PROJECT } from "../utils/actions";
 
 
 // import TaskList form "../components/TaskList";
@@ -34,18 +35,18 @@ import { useParams } from "react-router-dom";
 
 // Select task & be re-directed to task itself 
 // 
-
+var nameofid;
 function Inproject() {
     const navigate = useNavigate()
     const { id } = useParams();
-    
-//create task 
-const [createTask, {data: creatingTask}] = useMutation(CREATE_TASK, {
-    // when create project runs, UserWorkspace re-runs & gets the new project created
-    refetchQueries: [QUERY_PROJECT_TASKS]
-  })
- 
-    console.log(id);
+
+    //create task 
+    const [createTask, { data: creatingTask }] = useMutation(CREATE_TASK, {
+        // when create project runs, UserWorkspace re-runs & gets the new project created
+        refetchQueries: [QUERY_PROJECT_TASKS]
+    })
+
+    // console.log(id);
     // const [createTask, { data: task }] = useMutation(CREATE_TASK, {
     //     // when create project runs, UserWorkspace re-runs & gets the new project created
     //     refetchQueries: [QUERY_TASKS]
@@ -53,39 +54,44 @@ const [createTask, {data: creatingTask}] = useMutation(CREATE_TASK, {
     // const [deleteTask, {data: task }] = useMutation(DELETE_TASK)
     const { loading, data } = useQuery(QUERY_ALLUSERS);
     const { data: self } = useQuery(QUERY_TASKS);
+
+  
+
     // data = users, users is an object underneath the query in queries.js files
     const users = data?.users || []
     const user = self?.user || []
 
-  const [Priority, setPriority] = useState('')
-  const valid=true;
-  const [description, setDescription] = useState('')
-  // data = users, users is an object underneath the query in queries.js files
-  function onSubmit (e) {
-    e.preventDefault();
-    createTask({
-      variables: {
-        // must be users b/c of typedefs & mutations
-         priority: Priority,
-         status: valid,
-         description: description,
-         project: id.toString() }
-      })}
+    const [Priority, setPriority] = useState('')
+    const valid = true;
+    const [description, setDescription] = useState('')
+    // data = users, users is an object underneath the query in queries.js files
+    function onSubmit(e) {
+        e.preventDefault();
+        createTask({
+            variables: {
+                // must be users b/c of typedefs & mutations
+                priority: Priority,
+                status: valid,
+                description: description,
+                project: id.toString()
+            }
+        })
+    }
+
+    const { data: projectID } = useQuery(QUERY_PROJECT_ID, {
+        variables: { id: id },
+        
+    });
+    const projects = projectID?.project?.name || []
+    const describes = projectID?.project?.description || []
+    console.log(projects);
+    
+        
+
+// console.log(nameofid);
 
     
-
-    // function onSubmit(e) {
-    //     e.preventDefault();
-    //     createTask({
-    //         variables: {
-    //             // must be users b/c of typedefs & mutations
-    //             description: description.description,
-    //             priority: priority.priority,
-    //             project: project.project
-    //         }
-    //     })
-    // }
-
+  
     return (
         <div className="container d-flex text-center mt-5">
             <div className="row d-flex" style={{ justifyContent: 'center', maxWidth: '100vw' }}>
@@ -94,8 +100,11 @@ const [createTask, {data: creatingTask}] = useMutation(CREATE_TASK, {
                 {/* Smaller Column */}
                 <div className="mb-4" style={{ maxWidth: '300px' }}>
                     <div className="project-info bg-lar">
-                        <h2>Project Name</h2>
+                        <h2>{projects}</h2>
+                        
                         <div className="sectionBreak p-4">
+                            <h3 className="underline">Description:</h3>
+                        <p>{describes}</p>
                             <h4>Team:</h4>
                             <div className="container text-center">
                                 <div className="row">
@@ -118,9 +127,7 @@ const [createTask, {data: creatingTask}] = useMutation(CREATE_TASK, {
                             </div>
                             <div className="mt-2">
                                 {/* add team modal button */}
-                                <button type="button" className="btn btn-submit" data-bs-toggle="modal" data-bs-target="#addTeamModal">
-                                    + Team
-                                </button>
+
                                 {/* add task modal button */}
                                 <button type="button" className="btn btn-submit" data-bs-toggle="modal" data-bs-target="#addTaskModal">
                                     + Task
@@ -162,7 +169,7 @@ const [createTask, {data: creatingTask}] = useMutation(CREATE_TASK, {
                                 </div>
                             </div>
 
-                            
+
 
 
 
@@ -229,9 +236,9 @@ const [createTask, {data: creatingTask}] = useMutation(CREATE_TASK, {
                         </thead>
                         <tbody>
 
-                        {<TaskList />} 
+                            {<TaskList />}
 
-                        </tbody> 
+                        </tbody>
                     </table>
                     {/* items mapped over - responsive info */}
                     {/* grab all tasks from user and create list */}
