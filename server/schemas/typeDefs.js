@@ -61,7 +61,7 @@ const typeDefs = gql`
 
     deleteTask(_id: ID!): Task
 
-    createProject(name: String!, description: String, users:[ID]): Project
+    createProject(name: String!, description: String, users:[ID], tasks:[ID]): Project
   }
 `;
 

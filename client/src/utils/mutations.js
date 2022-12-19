@@ -54,17 +54,19 @@ mutation Mutation($name: String!, $description: String, $users: [ID]) {
 // }
 // `
 
-export const CREATE_TASK = `
-mutation Mutation($priority: String!, $status: Boolean, $description: String) {
-  createTask(priority: $priority, status: $status, description: $description) {
+export const CREATE_TASK = gql`
+mutation CreateTask($priority: String!, $project: ID!, $description: String, $status: Boolean) {
+  createTask(priority: $priority, project: $project, description: $description, status: $status) {
+  
     description
     priority
     status
+   _id
   }
 }
 `
 
-export const UPDATE_TASK = `
+export const UPDATE_TASK = gql`
 mutation Mutation($id: ID!, $description: String, $status: Boolean, $priority: String) {
   updateTask(_id: $id, description: $description, status: $status, priority: $priority) {
     description
@@ -74,7 +76,7 @@ mutation Mutation($id: ID!, $description: String, $status: Boolean, $priority: S
 }
 `
 
-export const DELETE_TASK = `
+export const DELETE_TASK = gql`
 mutation Mutation($id: ID!) {
   deleteTask(_id: $id) {
     _id
