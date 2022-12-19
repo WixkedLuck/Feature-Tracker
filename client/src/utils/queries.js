@@ -102,3 +102,17 @@ query Query {
   }
 }
 `
+
+// Get Project Tasks
+export const QUERY_PROJECT_TASKS = gql `
+query Query($id: ID!) {
+  project(_id: $id) {
+    tasks {
+      _id
+      description
+      priority
+      status
+    }
+  }
+}
+`
