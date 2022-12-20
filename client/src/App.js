@@ -47,8 +47,9 @@ function App() {
     <ApolloProvider client={client}>
       
       <div className="App">
-        <Nav />
+        
         <Router>
+        <Nav />
           {/* this is our global helper below */}
           <ProjectProvider>
           <Routes>
@@ -69,7 +70,7 @@ function App() {
             /> 
              } 
             <Route
-              path="/Contact"
+              path="/contact"
               element={<Contact />}
             />
             <Route

@@ -3,6 +3,8 @@ import "../stylesheets/Login.css";
 import { useMutation } from '@apollo/client';
 import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
+import {Link} from "react-router-dom";
+
 
 function Login(props) {
   const [formState, setFormState] = useState({ email: '', password: '' });
@@ -48,7 +50,7 @@ function Login(props) {
         <div className="form-group d-flex mt-5">
           <button className="btn btn-submit center" type={"submit"}>Login</button>
           <button className="btn btn-primary center" type={"submit"}>
-            <a className='no-decoration' href="/signup">Sign-up</a></button>
+            <Link to="/signup" className='no-decoration' >Sign-up</Link></button>
         </div>
         {error ? (
           <div className='mt-3'>

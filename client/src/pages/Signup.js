@@ -3,6 +3,7 @@ import "../stylesheets/signup.css"
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
+import {Link} from "react-router-dom";
 
 // Importing React thereabove, and generating/exporting a signup page.
 function Signup(props) {
@@ -57,7 +58,7 @@ function Signup(props) {
           <div className="form-group d-flex mt-5">
           <button className="btn btn-submit center" type={"submit"}>Sign-Up</button>
           <button className="btn btn-primary center" type={"submit"}>
-            <a className='no-decoration' href="/login">Login</a></button>
+            <Link to="/login" className='no-decoration' >Login</Link></button>
         </div>
         </form>
     </div>
