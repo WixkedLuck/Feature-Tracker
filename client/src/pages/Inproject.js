@@ -57,12 +57,12 @@ const [createTask, {data: creatingTask}] = useMutation(CREATE_TASK, {
     const users = data?.users || []
     const user = self?.user || []
 
-  const [Priority, setPriority] = useState('')
+  const [Priority, setPriority] = useState('Low')
   const valid=true;
   const [description, setDescription] = useState('')
   // data = users, users is an object underneath the query in queries.js files
   function onSubmit (e) {
-    e.preventDefault();
+    //e.preventDefault();
     createTask({
       variables: {
         // must be users b/c of typedefs & mutations

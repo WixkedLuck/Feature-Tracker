@@ -21,7 +21,7 @@ const typeDefs = gql`
   type Task {
     _id: ID
     description: String
-    project: Project!
+    project: ID
     status: Boolean
     priority: String!
   }
