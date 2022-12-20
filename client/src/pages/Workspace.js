@@ -10,6 +10,8 @@ import { QUERY_ALLUSERS, USER_WORKSPACE } from '../utils/queries';
 import { CREATE_PROJECT } from '../utils/mutations';
 
 function Workspace() {
+
+  const [open, setOpen]= useState(false);
   // renaming data var to project
   const [createProject, {data: project}] = useMutation(CREATE_PROJECT, {
     // when create project runs, UserWorkspace re-runs & gets the new project created
@@ -31,13 +33,15 @@ function Workspace() {
   function onSubmit (e) {
     e.preventDefault();
     createProject({
+
       variables: {
         // must be users b/c of typedefs & mutations
-        name: name.name,
-         description: description.description,
-          users: team.team 
+        name: name,
+         description: description,
+          users: team 
       }
     })
+    setOpen(false);
   }
 
   return (
@@ -59,12 +63,13 @@ function Workspace() {
       <div className="container mt-5 header mb-5">
         <h1 className='h1x'>Create a new Project: </h1>
         {/* <!-- Button trigger modal --> */}
-        <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" className="btn btn-primary" onClick={() => setOpen(true)}>
           +
         </button>
 
         {/* <!-- Modal --> */}
-        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        {open &&<div className="modal d-block" >
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
@@ -105,12 +110,12 @@ function Workspace() {
                 </form>
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" className="btn btn-secondary" onClick={() => setOpen(false)}>Close</button>
 
               </div>
             </div>
-          </div>
-        </div>
+          </div> 
+        </div>}
 
       </div>
     </div>
