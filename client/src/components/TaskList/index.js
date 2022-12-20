@@ -29,7 +29,20 @@ export default function TaskList({ id }) {
                 deleteTask({ variables: { id: task._id }})
                 }} value={task._id}>
                     <button id={task._id} value={task._id} type="submit" className="btn btn-primary btn-pd"><FaTrashAlt value={task._id}/></button></form></td>
+            
+
+
+
+
+
+
+            
+            
+            
             </tr>
+
+                    
+
         ))
     );
 }

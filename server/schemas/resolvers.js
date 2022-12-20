@@ -60,8 +60,10 @@ const resolvers = {
         },
         createProject: async (parent, args, context) => {
             const team = [...args.users, context.user._id]
-           const task =  [...args.tasks, context.tasks._id]
-            return await Project.create({name: args.name, description: args.description, team, task });
+            console.log(context.user._id);
+            const project=await Project.create({name: args.name, description: args.description, team });
+           await User.findByIdAndUpdate(context.user._id, {$push: {projects: project._id}})
+            return project;
         },
         // Molly 12/17 - Added updateProject Mutation, Added createTask Mutation
         // Molly 12/18 - Removing UpdateProject for now
@@ -72,8 +74,11 @@ const resolvers = {
         // },
 
         createTask: async (parent, args, context) => {
-            
-            return await Task.create({description: args.description, status: args.status, priority: args.priority, project: args.Project})
+            console.log(args);
+           const task= await Task.create({description: args.description, status: args.status, priority: args.priority, project: args.project})
+           
+            await Project.findByIdAndUpdate(args.project, {$push: {tasks: task._id}})
+            return task
         },
     }
 };
