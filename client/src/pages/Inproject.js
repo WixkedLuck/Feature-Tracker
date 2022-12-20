@@ -37,6 +37,7 @@ import { UPDATE_PROJECT } from "../utils/actions";
 // 
 var nameofid;
 function Inproject() {
+    const [open, setOpen]= useState(false);
     const navigate = useNavigate()
     const { id } = useParams();
 
@@ -76,6 +77,7 @@ function Inproject() {
                 project: id.toString()
             }
         })
+        setOpen(false);
     }
 
     const { data: projectID } = useQuery(QUERY_PROJECT_ID, {
@@ -129,14 +131,14 @@ function Inproject() {
                                 {/* add team modal button */}
 
                                 {/* add task modal button */}
-                                <button type="button" className="btn btn-submit" data-bs-toggle="modal" data-bs-target="#addTaskModal">
+                                <button type="button" className="btn btn-submit" onClick={() => setOpen(true)}>
                                     + Task
                                 </button>
                             </div>
                             <button onClick={() => navigate(-1)} className="btn btn-primary btn-pd m-0">← Go Back</button>
 
                             {/* <!-- Add Task Modal --> */}
-                            <div className="modal fade bg-dark " id="addTaskModal" tabindex="-1" aria-labelledby="addTaskLabel" aria-hidden="true">
+                            {open && <div className="modal d-block bg-dark " id="addTaskModal" tabindex="-1" aria-labelledby="addTaskLabel" aria-hidden="true">
                                 <div className="modal-dialog ">
                                     <div className="modal-content styled mt-5">
                                         <div className="modal-header">
@@ -162,12 +164,12 @@ function Inproject() {
                                             </form>
                                         </div>
                                         <div className="modal-footer">
-                                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={() => setOpen(false)}>Close</button>
 
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>}
 
 
 
