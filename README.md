@@ -34,6 +34,7 @@ The purpose behind this project was to provide a platform for companies to share
 
 # Site
 Deployed Link: 
+https://smolbytes.herokuapp.com/
 
-![Workspace-Demo](./client/src/images/workspace.PNG)
+![Workspace-Demo](./client/src/images/Workspace.PNG)
 ![Home-Demo](./client/src/images/home.PNG)
